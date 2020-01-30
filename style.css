@@ -1,0 +1,19 @@
+h1{text-align: center;}
+        .container{position:relative; left:500px; top:50px;}
+        td {
+            padding-right: 15px;
+            padding-bottom: 15px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            margin: 8px 0;
+            border:none;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        button:hover{
+            background-color: springgreen;
+            color:black;
+        }
