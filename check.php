@@ -1,16 +1,16 @@
 <?php  
  require('connect.php');
 
-if (isset($_POST['user_id']) and isset($_POST['user_pass'])){
+if (isset($_POST['username']) and isset($_POST['password'])){
 	
 // Assigning POST values to variables.
-$username = $_POST['user_id'];
-$password = $_POST['user_pass'];
+$username = $_POST['username'];
+$password = $_POST['password'];
 
 // CHECK FOR THE RECORD FROM TABLE
-$query = "SELECT * FROM `login` WHERE username='$username' and Password='$password'";
+$query = "SELECT * FROM 'login' WHERE username='$username' and password='$password'";
  
-$result = mysqli_query($connection, $query) or die(mysqli_error($connection));
+$result = mysqli_query($connection, $query);
 $count = mysqli_num_rows($result);
 
 if ($count == 1){
