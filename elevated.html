@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="style.css">
 <style>
 * {box-sizing: border-box}
 body {font-family: "Lato", sans-serif;}
@@ -62,7 +63,7 @@ text-align:right;
 <body>
 
 <h1>PHOTOGRAPHER MANAGEMENT</h1>
-
+<a id="logout" href="login.html">Logout</a>
 
 <div class="tab">
   <button class="tablinks" onclick="openCity(event, 'welcome')" id="defaultOpen">Welcome</button>
@@ -99,7 +100,7 @@ text-align:right;
 </select></td></tr>
 <tr><td>Address</td><td> <input type="text" name="lastname"></td></tr>
 <tr><td>Postal Code</td><td> <input type="text" name="lastname"></td></tr>
-<tr><td><input type="button" value="Edit"></td></tr>
+<tr><td><input id="button" type="button" value="Edit"></td></tr>
  </table>
 </form>
 </div>

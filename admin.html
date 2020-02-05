@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="style.css">
 <style>
 td{
 padding-right : 15px;
@@ -72,14 +73,14 @@ text-align:right;
 .searchbox .search-container button {
 border-radius:5px;
   padding: 5px 8px;
-  background: #ddd;
+  background-color:gray;
   font-size: 15px;
   border: 1px solid gray;
   cursor: pointer;
 }
 
 .searchbox .search-container button:hover {
-  background: #ccc;
+  background-color:#aaaaaa;
 }
 @media screen and (max-width: 400px) {
   .searchbox .search-container {
@@ -106,7 +107,7 @@ border-radius:5px;
 <body>
 
 <h1>PHOTOGRAPHER MANAGEMENT</h1>
-
+<a id="logout" href="login.html">Logout</a>
 
 <div class="tab">
   <button class="tablinks" onclick="openCity(event, 'welcome')" id="defaultOpen">Welcome</button>
@@ -143,7 +144,7 @@ border-radius:5px;
 </select></td></tr>
 <tr><td>Address</td><td> <input type="text" name="lastname"></td></tr>
 <tr><td>Postal Code</td><td> <input type="text" name="lastname"></td></tr>
- <tr><td><input type="submit" value="Save"></td><td><input type="submit" value="Cancel"></td></tr>
+ <tr><td><input id="button" type="submit" value="Save"></td><td><input id="button" type="submit" value="Cancel"></td></tr>
  </table>
 </form>
 </div>
