@@ -8,27 +8,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 { 
  if (empty($_POST['username']) || empty($_POST['password'])) //Validating inputs using PHP code 
  { 
- echo "Incorrect username or password"; //
+ echo 
+ "Incorrect username or password"; //
  header("location:login.html");//You will be sent to Login.php for re-login 
  } 
- 
- $username = $_POST["username"]; // as the method type in the form is "post" we are using $_POST otherwise it would be $_GET[] 
- $password = $_POST["password"]; 
- $stmt= $db->prepare("SELECT useranme, password FROM login WHERE username = ?"); //Fetching all the records with input credentials
- $stmt->bind_param("s", $username); //bind_param() - Binds variables to a prepared statement as parameters. "s" indicates the type of the parameter.
- $stmt->execute();
- $stmt->bind_result($UsernameDB, $PasswordDB); // Binding i.e. mapping database results to new variables
-   
+ else{
+ $Username = $_POST["username"]; // as the method type in the form is "post" we are using $_POST otherwise it would be $_GET[] 
+ $Password = $_POST["password"]; 
+ $query="SELECT username, password FROM login WHERE username = $Username and password='$Password'"; //Fetching all the records with input credentials
+ $res=mysqli_query($query);
  //Compare if the database has username and password entered by the user. Password has to be decrypted while comparing.
- if ($stmt->fetch() && password_verify($password, $PasswordDB)) 
+ if (!empty($res)) 
  {
- $_SESSION['username']=$username; //Storing the username value in session variable so that it can be retrieved on other pages
- header("location: admin.html"); // user will be taken to profile page
+ $_SESSION['username']=$inUsername; //Storing the username value in session variable so that it can be retrieved on other pages
+ header("location:admin.html"); // user will be taken to profile page
  }
  else
  {
     echo "Incorrect username or password"; 
-   
+  
  } 
  } 
        ?>
