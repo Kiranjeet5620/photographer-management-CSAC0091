@@ -1,5 +1,9 @@
-        h1{text-align: center;}
+        h1{text-align: center;
+        color:rgba(77, 69, 69, 0.63);}
         .container{position:relative; left:500px; top:50px;}
+        h3{
+            position:absolute;left:580px;top:300px;
+            }
         td {
             padding-right: 15px;
             padding-bottom: 15px;
@@ -20,4 +24,7 @@
         }
         #logout{
             position: absolute; right:0px;top:0px;
+        }
+        body{
+            background-color: #f1f1f1;
         }
