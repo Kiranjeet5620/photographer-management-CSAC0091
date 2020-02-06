@@ -31,8 +31,9 @@ body {font-family: "Lato", sans-serif;}
   transition: 0.3s;
   font-size: 17px;
   border-radius: 0%;
-  padding: 0%;
+  
 }
+
 
 /* Change background color of buttons on hover */
 .tab button:hover {
@@ -62,6 +63,10 @@ position:relative;left:700px;top:100px;
 form{
   position: absolute;left: 380px; 
 }
+#display{
+  
+  position: absolute;right:200px;top:45%;
+}
 
 </style>
 </head>
@@ -81,7 +86,15 @@ form{
 
 <div id="myprofile" class="tabcontent"  >
   <h2>User Profile</h2>
-  <button id="rqstbtn">Request Elevated Access</button>
+  <button id="rqstbtn" onclick="myFunction()">Request Elevated Access</button>
+  <p id="display"></p>
+
+<script>
+function myFunction() {
+  document.getElementById("display").innerHTML = "Access Request is Pending Approval";
+  document.getElementById("rqstbtn").style.display = "none";
+}
+</script>
  <form>
 <table>
 <tr><td>Email Address</td><td><input type="email" name="email"></td></tr>
