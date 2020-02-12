@@ -31,4 +31,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
  } 
        ?>
  </body> 
- </html>
+ <?php 
+            
+            include ('config.php');
+            if(isset($_POST['sub'])){
+                
+                  if(isset($_POST['sub'])){
+                    $username = $_POST['username'];
+                    $password = $_POST['password'];
+                    $query = mysql_query("SELECT * FROM login WHERE username = $userName AND password = $userPass");
+                  
+                    if(mysql_num_rows($query)){
+                      $user = mysql_fetch_assoc($query)
+                      header("location:admin.html");
+                    } else {
+                      echo "<center><b style="color:red;">Invalide username or password, please check again!   </b></center>";             
+                    }
+                  }   
+                }
+             }      
+    ?>
