@@ -70,47 +70,6 @@
     .btns {
       text-align: right;
     }
-
-    .searchbox input[type=text] {
-      padding: 5px 8px;
-      font-size: 15px;
-      border-radius: 15px;
-      border: 1px solid gray;
-      background-image: url('searchicon.png');
-      background-position: 5px 5px;
-      background-repeat: no-repeat;
-    }
-
-    .searchbox .search-container button {
-      border-radius: 5px;
-      padding: 5px 8px;
-      background-color: gray;
-      font-size: 15px;
-      border: 1px solid gray;
-      cursor: pointer;
-    }
-
-    .searchbox .search-container button:hover {
-      background-color: #aaaaaa;
-    }
-
-    @media screen and (max-width: 400px) {
-      .searchbox .search-container {
-        float: none;
-      }
-
-      .searchbox input[type=text],
-      .search-container button {
-        float: none;
-        display: block;
-        text-align: left;
-        width: 100%;
-        margin: 0;
-        padding: 14px;
-      }
-
-    }
-
     #table {
       border: 1px solid black;
       width: 50%;
@@ -123,12 +82,15 @@
       left: 380px;
     }
 
-    .btn {
-      color: black;
+    .button_group {
+            border-radius: 0%;
+            margin:-2px;
+            border: 1px solid black;
+            
     }
-
-    .button_group,button{
-          border-radius: 0%;       
+    #search{
+      background-color: gray;
+      border-radius:4px;
     }
   </style>
 </head>
@@ -205,7 +167,7 @@
         </tr>
         <tr>
           <td><input id="button" type="submit" value="Save"></td>
-          <td><input id="button" type="submit" value="Cancel"></td>
+          <td><input id="button" type="button" value="Cancel"></td>
         </tr>
       </table>
     </form>
@@ -214,10 +176,10 @@
   <div id="users" class="tabcontent">
     <h2>Users</h2>
     <div class="btns">
-      <button class="btn"><i class="fa fa-plus-circle"></i> Create</button>&nbsp;&nbsp;&nbsp;
-      <button class="btn"><i class="fa fa-eye"></i> View</button>&nbsp;&nbsp;&nbsp;
-      <button class="btn"><i class="fa fa-pencil"></i> Edit</button>&nbsp;&nbsp;&nbsp;
-      <button class="btn"><i class="fa fa-close"></i> Delete</button>
+      <button><i class="fa fa-plus-circle"></i> Create</button>&nbsp;&nbsp;&nbsp;
+      <button><i class="fa fa-eye"></i> View</button>&nbsp;&nbsp;&nbsp;
+      <button><i class="fa fa-pencil"></i> Edit</button>&nbsp;&nbsp;&nbsp;
+      <button><i class="fa fa-close"></i> Delete</button>
     </div>
     <div>
       <table>
@@ -285,13 +247,13 @@
               <div class="search-container">
 
                 <input type="text" name="search">
-                <button>Search</button>
+                <button id="search">Search</button>
               </div>
             </div>
           </td>
           <td>
-            <div class="button_group"><button >Approve</button>
-              <button >Decline</button></div>
+            <div><button class="button_group">Approve</button>
+              <button class="button_group">Decline</button></div>
           </td>
         </tr>
       </table>
