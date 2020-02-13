@@ -1,40 +1,48 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Table with database</title>
-</head>
-
-<body>
+<?php
+ $username = "root";
+ $password = "";
+ $host = "localhost";
+ $connector = mysql_connect($host, $username, $password)
+    or die("Unable to connect");
+ $selected = mysql_select_db("sample", $connector)
+    or die("Unable to connect");
+ ?>
+ <!DOCTYPE html>
+ <html >
+ <head>
+    <title>Home</title>
+    <link href="style/index-layout.css" rel="stylesheet" type="text/css" />
+    <link href="style/homepage-layout.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+    <!--right-->
+    <div id="body">
+        <div id="left">
+        </div></div>
+    <?php
+    //execute the SQL query and return records
+    $result = mysql_query("SELECT * FROM alte_brand");
+    ?>
     <table>
-        <tr>
-            <th>User ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Access Type</th>
-            <th>Department</th>
-        </tr>
-        <?php
-        $conn = mysqli_connect("localhost", "root", "", "photographymanagement");
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-        $sql = "SELECT UserId,FirstName,LastName,AccessType,Department FROM user";
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-            // output data of each row
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr><td>" . $row["UserId"] . "</td><td>" . $row["FirstName"] . "</td><td>" . $row["LastName"] . "</td><td>"
-                    . $row["AccessType"] . "</td><td>" . $row["Department"] .  "</td></tr>";
-            }
-            echo "</table>";
-        } else {
-            echo "0 results";
-        }
-        $conn->close();
-        ?>
-    </table>
-</body>
+        <thead>
+            <tr>
+                <th>Employee_id</th>
+                <th>Employee_Name</th>
 
-</html>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            while ($row = mysql_fetch_assoc($result)) {
+                echo
+                "<tr>
+          <td>{$row['bid']}</td>
+          <td>{$row['bname']}</td>
+        </tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+ </body>
+ </html>
+<?php mysql_close($connector); ?>
