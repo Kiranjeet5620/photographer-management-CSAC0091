@@ -1,53 +1,36 @@
-<!DOCTYPE HTML>
-<html>
-<body>
-<?php 
- include("config.php"); 
- session_start(); //always start a session in the beginning 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') 
-{ 
- if (empty($_POST['username']) || empty($_POST['password'])) //Validating inputs using PHP code 
- { 
- echo 
- "Incorrect username or password"; //
- header("location:login.html");//You will be sent to Login.php for re-login 
- } 
- else{
- $Username = $_POST["username"]; // as the method type in the form is "post" we are using $_POST otherwise it would be $_GET[] 
- $Password = $_POST["password"]; 
- $query="SELECT username, password FROM login WHERE username = $Username and password='$Password'"; //Fetching all the records with input credentials
- $res=mysqli_query($query);
- //Compare if the database has username and password entered by the user. Password has to be decrypted while comparing.
- if (!empty($res)) 
- {
- $_SESSION['username']=$inUsername; //Storing the username value in session variable so that it can be retrieved on other pages
- header("location:admin.html"); // user will be taken to profile page
- }
- else
- {
-    echo "Incorrect username or password"; 
+<?php  
+$db = mysqli_connect('localhost','root','','photographymanagement')
+or die('Error connecting to MySQL server.');
+if(isset($_POST["submit"])){  
   
- } 
- } 
-       ?>
- </body> 
- <?php 
-            
-            include ('config.php');
-            if(isset($_POST['sub'])){
-                
-                  if(isset($_POST['sub'])){
-                    $username = $_POST['username'];
-                    $password = $_POST['password'];
-                    $query = mysql_query("SELECT * FROM login WHERE username = $userName AND password = $userPass");
-                  
-                    if(mysql_num_rows($query)){
-                      $user = mysql_fetch_assoc($query)
-                      header("location:admin.html");
-                    } else {
-                      echo "<center><b style="color:red;">Invalide username or password, please check again!   </b></center>";             
-                    }
-                  }   
-                }
-             }      
-    ?>
+if(!empty($_POST['username']) && !empty($_POST['password'])) {  
+    $username=$_POST['username'];  
+    $password=$_POST['password'];  
+
+    $sql="SELECT * FROM login WHERE username='$username' AND password='$password' ";  
+    $query=mysqli_query($db,$sql);
+    $numrows=mysqli_num_rows($query);  
+    if($numrows!=0)  
+    {  
+    while($row=mysqli_fetch_assoc($query))  
+    {  
+    $dbusername=$row['username'];  
+    $dbpassword=$row['password'];  
+    }  
+  
+    if($username == $dbusername && $password == $dbpassword)  
+    {  
+    //session_start();  
+    //$_SESSION['sess_user']=$username;  
+  
+    /* Redirect browser */  
+    header("Location: admin.html");  
+    }  
+    } else {  
+    echo "Invalid username or password!";  
+    }  
+  
+} else {  
+    echo "All fields are required!";  
+}  
+}
