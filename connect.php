@@ -1,6 +1,5 @@
 <?php  
-$db = mysqli_connect('localhost','root','','photographymanagement')
-or die('Error connecting to MySQL server.');
+include("config.php");
 if(isset($_POST["submit"])){  
   
 if(!empty($_POST['username']) && !empty($_POST['password'])) {  
@@ -34,3 +33,4 @@ if(!empty($_POST['username']) && !empty($_POST['password'])) {
     echo "All fields are required!";  
 }  
 }
+?>
