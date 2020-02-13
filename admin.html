@@ -3,6 +3,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 td{
 padding-right : 15px;
@@ -105,11 +106,12 @@ border-radius:5px;
  form{
   position: absolute;left: 380px; 
 }
-img{
-  height:15px;
-  width:15px;
-  background-color: Transparent;
+.btn{
+  background-color:lightslategrey;
+  color:black;
+  border:gray 1px solid;
 }
+
 </style>
 </head>
 <body>
@@ -159,8 +161,11 @@ img{
 
 <div id="users" class="tabcontent">
   <h2>Users</h2>
-  <div class="btns">
-<button>Create</button>&nbsp;&nbsp;&nbsp;<button>View</button>&nbsp;&nbsp;&nbsp;<button>Edit</button>&nbsp;&nbsp;&nbsp;<button>Delete</button>
+  <div>
+<button class="btns">Create</button>&nbsp;&nbsp;&nbsp;
+<button class="btns">View</button>&nbsp;&nbsp;&nbsp;
+<button class="btns">Edit</button>&nbsp;&nbsp;&nbsp;
+<button class="btns">Delete</button>
 </div>
 <div>
 <table><tr>
@@ -198,7 +203,10 @@ img{
 <div id="accessrequests" class="tabcontent">
   <h2>Access Requests</h2>
    <div class="btns">
-<button><img src="" />Create</button>&nbsp;&nbsp;&nbsp;<button><img src="images/eye2.png" /> View</button>&nbsp;&nbsp;&nbsp;<button>Edit</button>&nbsp;&nbsp;&nbsp;<button>Delete</button>
+<button class="btn"><img src="" />Create</button>&nbsp;&nbsp;&nbsp;
+<button class="btn"><i class="fa fa-eye"></i> View</button>&nbsp;&nbsp;&nbsp;
+<button class="btn"><i class="fa fa-pencil"></i> Edit</button>&nbsp;&nbsp;&nbsp;
+<button class="btn">Delete</button>
 </div>
 <div>
 <table><tr>
