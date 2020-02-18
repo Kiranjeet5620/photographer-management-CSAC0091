@@ -61,7 +61,7 @@ width:80px;
 </head>
 <body>
 <div class="container">
-<form method="POST" action="insert.php">
+<form method="POST" action="testing.php">
 <table>
 <tr><td>Email Address</td><td><input type="email" name="email" ></td></tr>
 <tr><td>Password</td><td><input type="password" name="password" ></td></tr>
