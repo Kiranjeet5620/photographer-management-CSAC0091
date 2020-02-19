@@ -10,9 +10,13 @@ if(isset($_POST['submit'])){
     $lname = $_POST["lname"];
     $dob = $_POST["dob"];
 
-    $sql="insert into  signup(email,password,fname,lname,dob,cpass) Values($email,$pass, $fname,$lname,$dob,$cpass) ";  
-    $result = mysqli_query($db,$sql);
-    echo "1 record added";
+    $sql="insert into  signup(email,password,fname,lname,dob,cpass) Values('$email','$pass',' $fname','$lname','$dob','$cpass') ";  
+    
+                if (mysqli_query($db, $sql)) {
+                  header("url=regularuser.html")
+              } else {
+                  echo "Error: " . $sql . "<br>" . mysqli_error($db);
+              }
   }
   else{
   echo "errorrrrrrrrrr";
@@ -20,6 +24,13 @@ if(isset($_POST['submit'])){
   mysqli_close($db);
 
 ?>
+<html>
+ <head>
+ </head>
+ <body>
+ <h1>zxdcfgvbh</h1>
+</body>
+</html>
 
 <html>
  <head>
