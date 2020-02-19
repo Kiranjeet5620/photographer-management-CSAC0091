@@ -18,18 +18,3 @@ or die('Error connecting to MySQL server.');
   mysqli_close($db);
 
 ?>
-<html>
- <head>
- </head>
- <body>
- <h1>zxdcfgvbh</h1>
-</body>
-</html>
-
-<html>
- <head>
- </head>
- <body>
- <h1>PHP connect to MySQL scmmcslmkdcms</h1>
-</body>
-</html>
