@@ -1,16 +1,4 @@
 {
-    "sqltools.connections": [
-        {
-            "askForPassword": false,
-            "database": "photographymanagement",
-            "dialect": "MySQL",
-            "isActive": true,
-            "isConnected": true,
-            "name": "connection",
-            "port": 3306,
-            "server": "localhost",
-            "username": "root"
-        }
-    ],
+    "sqltools.connections": [],
     "phpserver.port": 5500
 }
