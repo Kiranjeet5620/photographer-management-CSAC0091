@@ -90,7 +90,7 @@
   </div>
 
   <div id="welcome" class="tabcontent">
-    <h3>Welcome Regular Access User</h3><br>
+    <h3>Welcome Regular Access User</h3>
   </div>
 
   <div id="myprofile" class="tabcontent">

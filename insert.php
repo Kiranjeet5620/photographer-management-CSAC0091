@@ -1,18 +1,8 @@
 <?php
 //Step1
 $db = mysqli_connect('localhost', 'root', '','photographymanagement');
-if (!$db) {
-  echo 'Not connected to server';
-}
-else{
-  echo 'connceted';
-}
-if (!mysqli_select_db($db,'photographymanagement')) {
-  echo '  Database not selected';
-}
-else{
-  echo '  databse selected';
-}
+
+
 if (isset($_POST['submit'])) {
 
   $email = $_POST['email'];
@@ -23,10 +13,10 @@ if (isset($_POST['submit'])) {
   $dob = $_POST['dob'];
 
   if($pass==$cpass){
-  $sql = "INSERT INTO signup (email,pass,cpass,fname,lname,dob) Values('$email','$pass','$cpass','$fname','$lname','$dob') ";
+  $sql = "INSERT INTO USER (Email,Password,CPassword,FirstName,LastName,Dob) Values('$email','$pass','$cpass','$fname','$lname','$dob') ";
   $result = mysqli_query($db, $sql);
   if (!empty($result)) {
-    echo " inserted";
+    echo " Thank you! Signed Up successfully";
   } else {
     echo "   something went wrong";
   }

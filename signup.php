@@ -91,7 +91,7 @@
         </tr>
         <tr>
           <td>Date of birth</td>
-          <td><input type="date" name="dob"></td>
+          <td><input type="date" name="dob" style="width: 172px"></td>
         </tr>
 
         <tr>
