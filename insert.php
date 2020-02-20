@@ -1,11 +1,10 @@
 <?php
 //Step1
-$db = mysqli_connect('localhost','root','','photographymanagement')
- or die('Error connecting to MySQL server.');
- if (!$db) {
+$db = mysqli_connect('localhost', 'root', '');
+if (!$db) {
   echo 'Not connected to server';
 }
-if (!mysqli_select_db($db, 'photographymanagement')) {
+if (!mysqli_select_db($db,'photographymanagement')) {
   echo 'Database not selected';
 }
 if (isset($_POST['submit'])) {
