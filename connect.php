@@ -6,7 +6,7 @@ if(!empty($_POST['username']) && !empty($_POST['password'])) {
     $username=$_POST['username'];  
     $password=$_POST['password'];  
 
-    $sql="SELECT * FROM login WHERE username='$username' AND password='$password' ";  
+    $sql="SELECT * FROM user WHERE Email='$username' AND Password='$password' AND AccessType='1' ";  
     $query=mysqli_query($db,$sql);
     $numrows=mysqli_num_rows($query);  
     if($numrows!=0)  
@@ -17,7 +17,7 @@ if(!empty($_POST['username']) && !empty($_POST['password'])) {
     $dbpassword=$row['password'];  
     }  
   
-    if($username == $dbusername && $password == $dbpassword)  
+    if($username == $dbusername && $password == $dbpassword &&)  
     {  
     //session_start();  
     //$_SESSION['sess_user']=$username;  

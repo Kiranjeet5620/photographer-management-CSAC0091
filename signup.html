@@ -67,11 +67,11 @@
 
 <body>
   <div class="container">
-    <form method="POST" action="config.php">
+    <form  action="insert.php" method="POST">
       <table>
         <tr>
           <td>Email Address</td>
-          <td><input type="text" name="email"></td>
+          <td><input type="email" name="email"></td>
         </tr>
         <tr>
           <td>Password</td>
@@ -91,12 +91,12 @@
         </tr>
         <tr>
           <td>Date of birth</td>
-          <td><input type="text" name="dob"></td>
+          <td><input type="date" name="dob"></td>
         </tr>
 
         <tr>
           <td></td>
-          <td><input id="button" type="submit" value="submit"></td>
+          <td><input id="button" type="submit" name="submit" value="submit"></td>
         </tr>
       </table>
       
