@@ -1,4 +1,14 @@
 {
-    "sqltools.connections": [],
+    "sqltools.connections": [
+        {
+            "askForPassword": false,
+            "database": "photographymanagement",
+            "dialect": "MySQL",
+            "name": "conn",
+            "port": 3306,
+            "server": "localhost",
+            "username": "root"
+        }
+    ],
     "phpserver.port": 5500
 }
