@@ -24,15 +24,15 @@ if(!empty($_POST['username']) && !empty($_POST['password'])) {
         //$_SESSION['sess_user']=$username;  
     
         /* Redirect browser */  
-        header("Location: admin.html");  
+        header("Location: admin.php");  
         }  
         elseif($username == $dbusername && $password == $dbpassword && $access=='3')  
         {  
-        header("Location: regularuser.html");  
+        header("Location: regularuser.php");  
         } 
         elseif($username == $dbusername && $password == $dbpassword && $access=='2')  
         {  
-        header("Location: elevated.html");  
+        header("Location: elevated.php");  
         }   
     } 
     else {  
