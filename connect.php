@@ -6,26 +6,36 @@ if(!empty($_POST['username']) && !empty($_POST['password'])) {
     $username=$_POST['username'];  
     $password=$_POST['password'];  
 
-    $sql="SELECT * FROM user WHERE Email='$username' AND Password='$password' AND AccessType='1' ";  
+    $sql="SELECT * FROM user WHERE Email='$username' AND Password='$password'  ";  
     $query=mysqli_query($db,$sql);
     $numrows=mysqli_num_rows($query);  
     if($numrows!=0)  
     {  
-    while($row=mysqli_fetch_assoc($query))  
-    {  
-    $dbusername=$row['username'];  
-    $dbpassword=$row['password'];  
-    }  
+        while($rows=mysqli_fetch_assoc($query))  
+        {  
+        $dbusername=$rows['Email'];  
+        $dbpassword=$rows['Password']; 
+        $access=$rows['AccessType'];
+        }  
   
-    if($username == $dbusername && $password == $dbpassword &&)  
-    {  
-    //session_start();  
-    //$_SESSION['sess_user']=$username;  
-  
-    /* Redirect browser */  
-    header("Location: admin.html");  
-    }  
-    } else {  
+        if($username == $dbusername && $password == $dbpassword && $access=='1')  
+        {  
+        //session_start();  
+        //$_SESSION['sess_user']=$username;  
+    
+        /* Redirect browser */  
+        header("Location: admin.html");  
+        }  
+        elseif($username == $dbusername && $password == $dbpassword && $access=='3')  
+        {  
+        header("Location: regularuser.html");  
+        } 
+        elseif($username == $dbusername && $password == $dbpassword && $access=='2')  
+        {  
+        header("Location: elevated.html");  
+        }   
+    } 
+    else {  
     echo "Invalid username or password!";  
     }  
   
@@ -33,4 +43,3 @@ if(!empty($_POST['username']) && !empty($_POST['password'])) {
     echo "All fields are required!";  
 }  
 }
-?>
