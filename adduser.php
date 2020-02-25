@@ -22,6 +22,6 @@ if (isset($_POST['submit'])) {
     if (!empty($result)) {
         echo "User added successfully";
     } else {
-        echo mysqli_error($access);
+        echo mysqli_error($sql);
     }
 }

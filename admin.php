@@ -187,12 +187,16 @@
         <tr>
           <td>Department</td>
           <td><select name="deprt">
-              <option value="Portrait Photography">Portrait Photography</option>
-              <option value="Technology">Technology</option>
-              <option value="Fashion Photography">Fashion Photography</option>
-              <option value="Sports Photography">Sports Photography</option>
-              <option value="Wildlife Photography">Wildlife Photography</option>
+          <?php
+              include('config.php');
+              $sql = mysqli_query($db, "SELECT * FROM department");
+
+              while ($row = $sql->fetch_assoc()) {
+                echo '<option value=" ' . $row['D_id'] . ' "> ' . $row['DepartmentName'] . ' </option>';
+              }
+              ?>
             </select></td>
+            
         </tr>
         <tr>
           <td>Address</td>
