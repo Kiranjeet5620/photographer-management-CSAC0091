@@ -13,15 +13,15 @@ if (isset($_POST['submit'])) {
     $access = $_POST['acc'];
     $phone = $_POST['phno'];
     $depart = $_POST['deprt'];
-    $adddress = $_POST['add'];
+    $address = $_POST['add'];
     $postal = $_POST['pcode'];
     
-    $sql = "INSERT INTO USER (Email,Password,FirstName,LastName,Dob,AccessType,Phone,Department,Address,PostalCode) 
-                     Values('$email','$pass','$fname','$lname','$dob','$access','$phone','$depart','$adddress','$postal') ";
+    $sql = "INSERT INTO user (Email,Password,FirstName,LastName,Dob,AccessType,Phone,Department,Address,PostalCode) 
+                     Values('$email','$pass','$fname','$lname','$dob','$access','$phone','$depart','$address','$postal') ";
     $result = mysqli_query($db, $sql);
     if (!empty($result)) {
         echo "User added successfully";
     } else {
-        echo "something went wrong";
+        echo mysqli_error($sql);
     }
 }

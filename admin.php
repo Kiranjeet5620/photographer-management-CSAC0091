@@ -164,14 +164,24 @@
         </tr>
         <tr>
           <td>Date of birth</td>
-          <td><input type="date" name="dob" "></td>
+          <td><input type="date" name="dob"></td>
         </tr>
         <tr>
           <td>Access Type</td>
-          <td><select name=" acc" ">
-              <option value=" Administrator">Administrator</option>
-            <option value="Management">Management</option>
-            <option value="Photographer">Photographer</option>
+          <td><select name="acc">
+              <?php
+              include('config.php');
+              $sql = mysqli_query($db, "SELECT AccessType FROM access");
+
+              while ($row = $sql->fetch_assoc()) {
+
+              ?>
+                <option value=1><?php echo $row['AccessType']; ?></option>
+
+              <?php
+                // close while loop 
+              }
+              ?>
             </select>
           </td>
         </tr>
