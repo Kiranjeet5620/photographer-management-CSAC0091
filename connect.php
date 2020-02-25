@@ -24,7 +24,7 @@ if(!empty($_POST['username']) && !empty($_POST['password'])) {
         //$_SESSION['sess_user']=$username;  
     
         /* Redirect browser */  
-        header("Location: admin.php");  
+        header("Location: admin.html");  
         }  
         elseif($username == $dbusername && $password == $dbpassword && $access=='3')  
         {  
