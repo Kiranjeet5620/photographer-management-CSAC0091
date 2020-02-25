@@ -174,12 +174,7 @@
               $sql = mysqli_query($db, "SELECT AccessType FROM access");
 
               while ($row = $sql->fetch_assoc()) {
-
-              ?>
-                <option value=1><?php echo $row['AccessType']; ?></option>
-
-              <?php
-                // close while loop 
+                echo '<option value=" ' . $row['A_id'] . ' "> ' . $row['AccessType'] . ' </option>';
               }
               ?>
             </select>
