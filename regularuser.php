@@ -104,7 +104,7 @@
         document.getElementById("rqstbtn").style.display = "none";
       }
     </script>
-    <form>
+    <form method='POST' action="edituser.php">
       <table>
         <tr>
           <td>Email Address</td>
