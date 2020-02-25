@@ -171,7 +171,7 @@
           <td><select name="acc">
               <?php
               include('config.php');
-              $sql = mysqli_query($db, "SELECT AccessType FROM access");
+              $sql = mysqli_query($db, "SELECT * FROM access");
 
               while ($row = $sql->fetch_assoc()) {
                 echo '<option value=" ' . $row['A_id'] . ' "> ' . $row['AccessType'] . ' </option>';

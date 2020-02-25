@@ -10,7 +10,7 @@ if (isset($_POST['submit'])) {
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
     $dob = $_POST['dob'];
-    $access = intval($_POST['acc']);
+    $access =$_POST['acc'];
     $phone = $_POST['phno'];
     $depart = $_POST['deprt'];
     $address = $_POST['add'];
@@ -22,6 +22,6 @@ if (isset($_POST['submit'])) {
     if (!empty($result)) {
         echo "User added successfully";
     } else {
-        echo "asdfghjkl";
+        echo mysqli_error($access);
     }
 }
