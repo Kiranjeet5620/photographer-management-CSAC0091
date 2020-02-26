@@ -119,14 +119,14 @@ if (isset($_GET['logout'])) {
   <div id="welcome" class="tabcontent">
     <h3>Welcome Regular Access User</h3>
     <?php 
-     if (isset($_SESSION['username'])) : ?> 
+     if (isset($_SESSION['username']))  ?> 
             <p> 
                 Hi!   
                 <strong> 
                     <?php echo $_SESSION['username']; ?> 
                 </strong> 
             </p> 
-            <?php endif ?>  
+              
   </div>
 
   <div id="myprofile" class="tabcontent">
@@ -141,8 +141,16 @@ if (isset($_GET['logout'])) {
       }
     </script>
     
-
-    
+    <?php 
+     if (isset($_SESSION['password'])) 
+     if (isset($_SESSION['fname']))
+     if (isset($_SESSION['lname']))
+     if (isset($_SESSION['dob']))
+     if (isset($_SESSION['accessType']))
+     if (isset($_SESSION['ph']))
+     if (isset($_SESSION['depart']))
+     if (isset($_SESSION['address']))
+       ?>
   
     <form method='POST' action="edituser.php">
       <table>
@@ -156,7 +164,7 @@ if (isset($_GET['logout'])) {
         </tr>
         <tr>
           <td>First name</td>
-          <td> <input type="text" name="firstname"></td>
+          <td> <input type="text" name="firstname" value="<?php echo $_SESSION['fname'];  ?>"></td>
         </tr>
         <tr>
           <td>Last name</td>

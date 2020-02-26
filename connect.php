@@ -6,7 +6,10 @@ session_start();
 
 // Declaring and hoisting the variables 
 $username = ""; 
-$email = ""; 
+$password = ""; 
+$fname="";
+$lname="";
+$dob="";
 $errors = array(); 
 $_SESSION['success'] = ""; 
 if(isset($_POST["submit"])){  
@@ -38,8 +41,8 @@ if(!empty($_POST['username']) && !empty($_POST['password'])) {
         elseif($username == $dbusername && $password == $dbpassword && $access=='3')  
         {  
             session_start();  
-        $_SESSION['username'] = $username;  
-        $_SESSION['firstName'] = $fname; 
+        $_SESSION['username'] = $username; 
+        
         header("Location: regularuser.php");  
         } 
         elseif($username == $dbusername && $password == $dbpassword && $access=='2')  
