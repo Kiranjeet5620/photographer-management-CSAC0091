@@ -141,17 +141,6 @@ if (isset($_GET['logout'])) {
       }
     </script>
     
-    <?php 
-     if (isset($_SESSION['password'])) 
-     if (isset($_SESSION['fname']))
-     if (isset($_SESSION['lname']))
-     if (isset($_SESSION['dob']))
-     if (isset($_SESSION['accessType']))
-     if (isset($_SESSION['ph']))
-     if (isset($_SESSION['depart']))
-     if (isset($_SESSION['address']))
-       ?>
-  
     <form method='POST' action="edituser.php">
       <table>
         <tr>
