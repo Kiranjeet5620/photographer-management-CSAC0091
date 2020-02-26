@@ -1,5 +1,14 @@
 <?php  
 include("config.php");
+// Starting the session, necessary 
+// for using session variables 
+session_start(); 
+
+// Declaring and hoisting the variables 
+$username = ""; 
+$email = ""; 
+$errors = array(); 
+$_SESSION['success'] = ""; 
 if(isset($_POST["submit"])){  
   
 if(!empty($_POST['username']) && !empty($_POST['password'])) {  
@@ -20,18 +29,23 @@ if(!empty($_POST['username']) && !empty($_POST['password'])) {
   
         if($username == $dbusername && $password == $dbpassword && $access=='1')  
         {  
-        //session_start();  
-        //$_SESSION['sess_user']=$username;  
+        session_start();  
+        $_SESSION['username'] = $username;  
     
         /* Redirect browser */  
         header("Location: admin.html");  
         }  
         elseif($username == $dbusername && $password == $dbpassword && $access=='3')  
         {  
+            session_start();  
+        $_SESSION['username'] = $username;  
+        $_SESSION['firstName'] = $fname; 
         header("Location: regularuser.php");  
         } 
         elseif($username == $dbusername && $password == $dbpassword && $access=='2')  
         {  
+            session_start();  
+        $_SESSION['username'] = $username;  
         header("Location: elevated.php");  
         }   
     } 

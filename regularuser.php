@@ -1,3 +1,30 @@
+<?php 
+    include("config.php");
+  
+// Starting the session, to use and 
+// store data in session variable 
+session_start(); 
+   
+// If the session variable is empty, this  
+// means the user is yet to login 
+// User will be sent to 'login.php' page 
+// to allow the user to login 
+if (!isset($_SESSION['username'])) { 
+    $_SESSION['msg'] = "You have to log in first"; 
+    header('location: login.php'); 
+} 
+   
+// Logout button will destroy the session, and 
+// will unset the session variables 
+// User will be headed to 'login.php' 
+// after loggin out 
+if (isset($_GET['logout'])) { 
+    session_destroy(); 
+    unset($_SESSION['username']); 
+    header("location: login.php"); 
+} 
+?> 
+
 <!DOCTYPE html>
 <html>
 
@@ -80,32 +107,6 @@
 </head>
 
 <body>
-<?php 
-    include("config.php");
-  
-// Starting the session, to use and 
-// store data in session variable 
-session_start(); 
-   
-// If the session variable is empty, this  
-// means the user is yet to login 
-// User will be sent to 'login.php' page 
-// to allow the user to login 
-if (!isset($_SESSION['username'])) { 
-    $_SESSION['msg'] = "You have to log in first"; 
-    header('location: login.php'); 
-} 
-   
-// Logout button will destroy the session, and 
-// will unset the session variables 
-// User will be headed to 'login.php' 
-// after loggin out 
-if (isset($_GET['logout'])) { 
-    session_destroy(); 
-    unset($_SESSION['username']); 
-    header("location: login.php"); 
-} 
-?> 
 
   <h1>PHOTOGRAPHER MANAGEMENT</h1>
   <a id="logout" href="login.html">Logout</a>
@@ -117,7 +118,15 @@ if (isset($_GET['logout'])) {
 
   <div id="welcome" class="tabcontent">
     <h3>Welcome Regular Access User</h3>
-    <?php echo $_SESSION['username']; ?>
+    <?php 
+     if (isset($_SESSION['username'])) : ?> 
+            <p> 
+                Hi!   
+                <strong> 
+                    <?php echo $_SESSION['username']; ?> 
+                </strong> 
+            </p> 
+            <?php endif ?>  
   </div>
 
   <div id="myprofile" class="tabcontent">
@@ -139,11 +148,11 @@ if (isset($_GET['logout'])) {
       <table>
         <tr>
           <td>Email Address</td>
-          <td><input type="email" name="email"></td>
+          <td><input type="email" name="email" value=" <?php echo $_SESSION['username']; ?>"></td>
         </tr>
         <tr>
           <td>Password</td>
-          <td><input type="password" name="password"></td>
+          <td><input type="password" name="password" value="<?php echo $_SESSION['password']; ?>"></td>
         </tr>
         <tr>
           <td>First name</td>
