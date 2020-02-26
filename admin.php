@@ -187,7 +187,7 @@
         <tr>
           <td>Department</td>
           <td><select name="deprt">
-          <?php
+              <?php
               include('config.php');
               $sql = mysqli_query($db, "SELECT * FROM department");
 
@@ -196,7 +196,7 @@
               }
               ?>
             </select></td>
-            
+
         </tr>
         <tr>
           <td>Address</td>
