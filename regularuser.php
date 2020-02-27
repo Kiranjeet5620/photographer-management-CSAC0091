@@ -1,29 +1,29 @@
-<?php 
-    include("config.php");
+<?php
+include("config.php");
 // Starting the session, to use and 
 // store data in session variable 
-session_start(); 
+session_start();
 echo $_SESSION['username'];
 echo $_SESSION['lname'];
 // If the session variable is empty, this  
 // means the user is yet to login 
 // User will be sent to 'login.php' page 
 // to allow the user to login 
-if (!isset($_SESSION['username'])) { 
-    $_SESSION['msg'] = "You have to log in first"; 
-    header('location: login.php'); 
-} 
-   
+if (!isset($_SESSION['username'])) {
+  $_SESSION['msg'] = "You have to log in first";
+  header('location: login.php');
+}
+
 // Logout button will destroy the session, and 
 // will unset the session variables 
 // User will be headed to 'login.php' 
 // after loggin out 
-if (isset($_GET['logout'])) { 
-    session_destroy(); 
-    unset($_SESSION['username']); 
-    header("location: login.php"); 
-} 
-?> 
+if (isset($_GET['logout'])) {
+  session_destroy();
+  unset($_SESSION['username']);
+  header("location: login.php");
+}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -118,16 +118,16 @@ if (isset($_GET['logout'])) {
 
   <div id="welcome" class="tabcontent">
     <h3>Welcome Regular Access User</h3>
-    <?php 
-    
-     if (isset($_SESSION['username'])) : ?> 
-            <p> 
-                Hi!   
-                <strong> 
-                    <?php echo $_SESSION['username'] ?> 
-                </strong> 
-            </p> 
-            <?php endif ?>  
+    <?php
+
+    if (isset($_SESSION['username'])) : ?>
+      <p>
+        Hi!
+        <strong>
+          <?php echo $_SESSION['username'] ?>
+        </strong>
+      </p>
+    <?php endif ?>
   </div>
 
   <div id="myprofile" class="tabcontent">
@@ -141,8 +141,8 @@ if (isset($_GET['logout'])) {
         document.getElementById("rqstbtn").style.display = "none";
       }
     </script>
-    
-  
+
+
     <form method='POST' action="edituser.php">
       <table>
         <tr>

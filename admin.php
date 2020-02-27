@@ -248,7 +248,7 @@
         </tr>
       </table>
     </div>
-    <div id="table-scroll" style="width:527px;">
+    <div id="table-scroll" style="width:652px;">
       <table id="table1">
 
         <tr>
@@ -262,7 +262,8 @@
         </tr>
         <?php 
         include('config.php');
-        $query="Select*from user where AccessType=3";
+        $query="SELECT * FROM `user`inner join 
+        access inner join Department on user.AccessType=access.A_id AND user.Department=Department.D_id";
         $res=mysqli_query($db,$query);
         if(mysqli_num_rows($res)>0){
 
@@ -275,7 +276,7 @@
             echo "<td>".$row['FirstName']."</td>";
             echo "<td>".$row['LastName']."</td>";
             echo "<td>".$row['AccessType']."</td>";
-            echo "<td>".$row['Department']."</td>";
+            echo "<td>".$row['DepartmentName']."</td>";
             echo "</tr>";
             echo "</tbody>";
         }
