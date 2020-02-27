@@ -37,7 +37,7 @@ if (isset($_POST["submit"])) {
             } elseif ($username == $dbusername && $password == $dbpassword && $access == '3') {
                 session_start();
                 $_SESSION['username'] = $username;
-
+                $_SESSION['fname']=$row['FirstName'];
                 header("Location: regularuser.php");
             } elseif ($username == $dbusername && $password == $dbpassword && $access == '2') {
                 session_start();

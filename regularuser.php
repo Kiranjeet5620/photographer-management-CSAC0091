@@ -119,11 +119,13 @@ if (isset($_GET['logout'])) {
   <div id="welcome" class="tabcontent">
     <h3>Welcome Regular Access User</h3>
     <?php 
+    $_SESSION['fname']=$row['FirstName'];
      if (isset($_SESSION['username'])) : ?> 
             <p> 
                 Hi!   
                 <strong> 
-                    <?php echo $_SESSION['username']; ?> 
+                    <?php echo $_SESSION['username'];
+                    echo $_SESSION['password'] ?> 
                 </strong> 
             </p> 
             <?php endif ?>  
@@ -140,10 +142,6 @@ if (isset($_GET['logout'])) {
         document.getElementById("rqstbtn").style.display = "none";
       }
     </script>
-    
-<?php 
-     if (isset($_SESSION['username'])) : 
-     endif?>
     
   
     <form method='POST' action="edituser.php">
