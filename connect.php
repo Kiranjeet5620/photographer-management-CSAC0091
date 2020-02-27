@@ -24,11 +24,19 @@ if (isset($_POST["submit"])) {
                 $access = $rows['AccessType'];
                 $fname=$rows['FirstName'];
                 $lname=$rows['LastName'];
+                $dob=$rows['Dob'];
+                $phone=$rows['Phone'];
+                $add=$rows['Address'];
+                $postal=$rows['PostalCode'];
             }
             $_SESSION['username'] = $dbusername;
             $_SESSION['password'] = $dbpassword;
             $_SESSION['fname'] = $fname;
             $_SESSION['lname'] = $lname;
+            $_SESSION['dob'] = $dob;
+            $_SESSION['phone'] = $phone;
+            $_SESSION['add'] = $add;
+            $_SESSION['postal'] = $postal;
 
             if ($username == $dbusername && $password == $dbpassword && $access == '1') {
 

@@ -163,7 +163,7 @@ if (isset($_GET['logout'])) {
         </tr>
         <tr>
           <td>Date of birth</td>
-          <td><input type="date" name="DateofBirth" style="width:173px;"></td>
+          <td><input type="text" name="Dob" value="<?php echo $_SESSION['dob'];  ?>" style="width:173px;"></td>
         </tr>
         <tr>
           <td>Access Type</td>
@@ -175,7 +175,7 @@ if (isset($_GET['logout'])) {
         </tr>
         <tr>
           <td>Phone number</td>
-          <td> <input type="tel" name="phoneno"></td>
+          <td> <input type="text" name="phone" value="<?php echo $_SESSION['phone'];  ?>"></td>
         </tr>
         <tr>
           <td>Department</td>
@@ -189,11 +189,11 @@ if (isset($_GET['logout'])) {
         </tr>
         <tr>
           <td>Address</td>
-          <td> <input type="text" name="lastname"></td>
+          <td> <input type="text" name="address" value="<?php echo $_SESSION['add'];  ?>"></td>
         </tr>
         <tr>
           <td>Postal Code</td>
-          <td> <input type="text" name="lastname"></td>
+          <td> <input type="text" name="postal" value="<?php echo $_SESSION['postal'];  ?>"></td>
         </tr>
         <tr>
           <td><input id="button" type="button" value="Edit"></td>
