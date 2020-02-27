@@ -22,12 +22,12 @@ if (isset($_POST["submit"])) {
                 $dbusername = $rows['Email'];
                 $dbpassword = $rows['Password'];
                 $access = $rows['AccessType'];
-                $fname=$rows['FirstName'];
-                $lname=$rows['LastName'];
-                $dob=$rows['Dob'];
-                $phone=$rows['Phone'];
-                $add=$rows['Address'];
-                $postal=$rows['PostalCode'];
+                $fname = $rows['FirstName'];
+                $lname = $rows['LastName'];
+                $dob = $rows['Dob'];
+                $phone = $rows['Phone'];
+                $add = $rows['Address'];
+                $postal = $rows['PostalCode'];
             }
             $_SESSION['username'] = $dbusername;
             $_SESSION['password'] = $dbpassword;

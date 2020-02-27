@@ -4,7 +4,7 @@ include("config.php");
 // store data in session variable 
 session_start();
 echo $_SESSION['username'];
-echo $_SESSION['lname'];
+echo $_SESSION['phone'];
 // If the session variable is empty, this  
 // means the user is yet to login 
 // User will be sent to 'login.php' page 
@@ -147,23 +147,23 @@ if (isset($_GET['logout'])) {
       <table>
         <tr>
           <td>Email Address</td>
-          <td><input type="email" name="email" value=" <?php echo $_SESSION['username']; ?>"></td>
+          <td><input type="email" name="email" value=" <?php echo $_SESSION['username'];?>"></td>
         </tr>
         <tr>
           <td>Password</td>
-          <td><input type="text" name="password" value="<?php echo $_SESSION['password']; ?>"></td>
+          <td><input type="text" name="password" value="<?php echo $_SESSION['password'];?>"></td>
         </tr>
         <tr>
           <td>First name</td>
-          <td> <input type="text" name="firstname" value="<?php echo $_SESSION['fname'];  ?>"></td>
+          <td> <input type="text" name="firstname" value="<?php echo $_SESSION['fname'];?>"></td>
         </tr>
         <tr>
           <td>Last name</td>
-          <td> <input type="text" name="lastname" value="<?php echo $_SESSION['lname'];  ?>"></td>
+          <td> <input type="text" name="lastname" value="<?php echo $_SESSION['lname'];?>"></td>
         </tr>
         <tr>
           <td>Date of birth</td>
-          <td><input type="text" name="Dob" value="<?php echo $_SESSION['dob'];  ?>" style="width:173px;"></td>
+          <td><input type="date" name="Dob" value="<?php echo $_SESSION['dob'];?>"></td>
         </tr>
         <tr>
           <td>Access Type</td>
@@ -175,7 +175,7 @@ if (isset($_GET['logout'])) {
         </tr>
         <tr>
           <td>Phone number</td>
-          <td> <input type="text" name="phone" value="<?php echo $_SESSION['phone'];  ?>"></td>
+          <td> <input type="text" name="phone" value="<?php echo $_SESSION['phone'];?>"></td>
         </tr>
         <tr>
           <td>Department</td>
@@ -189,11 +189,11 @@ if (isset($_GET['logout'])) {
         </tr>
         <tr>
           <td>Address</td>
-          <td> <input type="text" name="address" value="<?php echo $_SESSION['add'];  ?>"></td>
+          <td> <input type="text" name="address" value="<?php echo $_SESSION['add'];?>"></td>
         </tr>
         <tr>
           <td>Postal Code</td>
-          <td> <input type="text" name="postal" value="<?php echo $_SESSION['postal'];  ?>"></td>
+          <td> <input type="text" name="postal" value="<?php echo $_SESSION['postal'];?>"></td>
         </tr>
         <tr>
           <td><input id="button" type="button" value="Edit"></td>
