@@ -1,10 +1,10 @@
 <?php 
     include("config.php");
-  
 // Starting the session, to use and 
 // store data in session variable 
 session_start(); 
-   
+echo $_SESSION['username'];
+echo $_SESSION['fname'];
 // If the session variable is empty, this  
 // means the user is yet to login 
 // User will be sent to 'login.php' page 
@@ -119,13 +119,12 @@ if (isset($_GET['logout'])) {
   <div id="welcome" class="tabcontent">
     <h3>Welcome Regular Access User</h3>
     <?php 
-    $_SESSION['fname']=$row['FirstName'];
+    
      if (isset($_SESSION['username'])) : ?> 
             <p> 
                 Hi!   
                 <strong> 
-                    <?php echo $_SESSION['username'];
-                    echo $_SESSION['password'] ?> 
+                    <?php echo $_SESSION['username'] ?> 
                 </strong> 
             </p> 
             <?php endif ?>  
@@ -152,11 +151,11 @@ if (isset($_GET['logout'])) {
         </tr>
         <tr>
           <td>Password</td>
-          <td><input type="password" name="password" value="<?php echo $_SESSION['password']; ?>"></td>
+          <td><input type="text" name="password" value="<?php echo $_SESSION['password']; ?>"></td>
         </tr>
         <tr>
           <td>First name</td>
-          <td> <input type="text" name="firstname" value="<?php $_SESSION['fname']  ?>"></td>
+          <td> <input type="text" name="firstname" value="<?php echo $_SESSION['fname'];  ?>"></td>
         </tr>
         <tr>
           <td>Last name</td>

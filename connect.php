@@ -5,11 +5,7 @@ include("config.php");
 session_start();
 
 // Declaring and hoisting the variables 
-$username = "";
-$password = "";
-$fname = "";
-$lname = "";
-$dob = "";
+
 $errors = array();
 $_SESSION['success'] = "";
 if (isset($_POST["submit"])) {
@@ -27,7 +23,7 @@ if (isset($_POST["submit"])) {
                 $dbpassword = $rows['Password'];
                 $access = $rows['AccessType'];
             }
-
+            
             if ($username == $dbusername && $password == $dbpassword && $access == '1') {
                 session_start();
                 $_SESSION['username'] = $username;
@@ -37,6 +33,7 @@ if (isset($_POST["submit"])) {
             } elseif ($username == $dbusername && $password == $dbpassword && $access == '3') {
                 session_start();
                 $_SESSION['username'] = $username;
+                $_SESSION['id']=$id;
                 $_SESSION['fname']=$row['FirstName'];
                 header("Location: regularuser.php");
             } elseif ($username == $dbusername && $password == $dbpassword && $access == '2') {
