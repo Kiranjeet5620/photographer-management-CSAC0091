@@ -28,6 +28,7 @@ if (isset($_POST["submit"])) {
                 $phone = $rows['Phone'];
                 $add = $rows['Address'];
                 $postal = $rows['PostalCode'];
+                $id=$rows['UserId'];
             }
             $_SESSION['username'] = $dbusername;
             $_SESSION['password'] = $dbpassword;
@@ -37,6 +38,7 @@ if (isset($_POST["submit"])) {
             $_SESSION['phone'] = $phone;
             $_SESSION['add'] = $add;
             $_SESSION['postal'] = $postal;
+            $_SESSION['id']=$id;
 
             if ($username == $dbusername && $password == $dbpassword && $access == '1') {
 

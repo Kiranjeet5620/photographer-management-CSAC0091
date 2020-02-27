@@ -4,7 +4,7 @@ include("config.php");
 // store data in session variable 
 session_start();
 echo $_SESSION['username'];
-echo $_SESSION['phone'];
+echo $_SESSION['id'];
 // If the session variable is empty, this  
 // means the user is yet to login 
 // User will be sent to 'login.php' page 
