@@ -45,7 +45,7 @@ if (isset($_POST["submit"])) {
                 $_SESSION['username'] = $username;
 
                 /* Redirect browser */
-                header("Location: admin.html");
+                header("Location: admin.php");
             } elseif ($username == $dbusername && $password == $dbpassword && $access == '3') {
 
                 header("Location: regularuser.php");

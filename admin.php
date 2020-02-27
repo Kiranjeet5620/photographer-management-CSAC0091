@@ -164,11 +164,11 @@
         </tr>
         <tr>
           <td>Date of birth</td>
-          <td><input type="date" name="dob"></td>
+          <td><input type="date" name="dob" style="width:173px;"></td>
         </tr>
         <tr>
           <td>Access Type</td>
-          <td><select name="acc">
+          <td><select name="acc" style="width:173px;">
               <?php
               include('config.php');
               $sql = mysqli_query($db, "SELECT * FROM access");
@@ -186,7 +186,7 @@
         </tr>
         <tr>
           <td>Department</td>
-          <td><select name="deprt">
+          <td><select name="deprt" style="width:173px;">
               <?php
               include('config.php');
               $sql = mysqli_query($db, "SELECT * FROM department");
