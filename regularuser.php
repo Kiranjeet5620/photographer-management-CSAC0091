@@ -109,7 +109,7 @@ if (isset($_GET['logout'])) {
 <body>
 
   <h1>PHOTOGRAPHER MANAGEMENT</h1>
-  <a id="logout" href="login.html">Logout</a>
+  <a id="logout" href="login.php">Logout</a>
 
   <div class="tab">
     <button class="tablinks" onclick="openCity(event, 'welcome')" id="defaultOpen">Welcome</button>
@@ -119,14 +119,14 @@ if (isset($_GET['logout'])) {
   <div id="welcome" class="tabcontent">
     <h3>Welcome Regular Access User</h3>
     <?php 
-     if (isset($_SESSION['username']))  ?> 
+     if (isset($_SESSION['username'])) : ?> 
             <p> 
                 Hi!   
                 <strong> 
                     <?php echo $_SESSION['username']; ?> 
                 </strong> 
             </p> 
-              
+            <?php endif ?>  
   </div>
 
   <div id="myprofile" class="tabcontent">
@@ -141,6 +141,11 @@ if (isset($_GET['logout'])) {
       }
     </script>
     
+<?php 
+     if (isset($_SESSION['username'])) : 
+     endif?>
+    
+  
     <form method='POST' action="edituser.php">
       <table>
         <tr>
@@ -153,7 +158,7 @@ if (isset($_GET['logout'])) {
         </tr>
         <tr>
           <td>First name</td>
-          <td> <input type="text" name="firstname" value="<?php echo $_SESSION['fname'];  ?>"></td>
+          <td> <input type="text" name="firstname" value="<?php $_SESSION['fname']  ?>"></td>
         </tr>
         <tr>
           <td>Last name</td>

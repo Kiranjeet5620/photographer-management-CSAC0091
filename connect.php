@@ -5,7 +5,11 @@ include("config.php");
 session_start();
 
 // Declaring and hoisting the variables 
-
+$username = "";
+$password = "";
+$fname = "";
+$lname = "";
+$dob = "";
 $errors = array();
 $_SESSION['success'] = "";
 if (isset($_POST["submit"])) {
