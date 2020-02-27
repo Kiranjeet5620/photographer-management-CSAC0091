@@ -248,7 +248,7 @@
         </tr>
       </table>
     </div>
-    <div id="table-scroll" style="width:652px;">
+    <div id="table-scroll" style="width:600px;">
       <table id="table1">
 
         <tr>

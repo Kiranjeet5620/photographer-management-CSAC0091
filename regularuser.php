@@ -196,7 +196,7 @@ if (isset($_GET['logout'])) {
           <td> <input type="text" name="postal" value="<?php echo $_SESSION['postal'];?>"></td>
         </tr>
         <tr>
-          <td><input id="button" type="button" value="Edit"></td>
+          <td><input id="button" type="submit" name="submit" value="Edit"></td>
         </tr>
       </table>
     </form>

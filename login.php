@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="pass.js"></script>
     <style>
         span {
             position: absolute;
@@ -43,26 +44,13 @@
                     <td>
                         <input id="Password" type="password" name="password" value=""></input>
                         <span><i class="fa fa-eye-slash" aria-hidden="true" id="password"></i></span>
-                        <script>
-                            var state = false;
 
-                            function toggle() {
-                                if (state) {
-                                    document.getElementById("password").setAttribute("type", "password");
-                                    state = false;
-                                } else {
-                                    document.getElementById("password").
-                                    setAttribute("type", "text");
-                                    state = true;
-                                }
-                            }
-                        </script>
                     </td>
                 </tr>
                 <tr>
                     <td></td>
                     <td> <input id="button" name="submit" type="submit" value="Log in"></input>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input id="button" type="button" onclick="location.href='signup.html';" value="Sign up"></input></td>
+                        <input id="button" type="button" onclick="location.href='signup.php';" value="Sign up"></input></td>
                 </tr>
             </table>
 
