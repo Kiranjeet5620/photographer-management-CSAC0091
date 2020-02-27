@@ -260,197 +260,29 @@
           <th>Department</th>
 
         </tr>
-        <tbody>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+        <?php 
+        include('config.php');
+        $query="Select*from user where AccessType=3";
+        $res=mysqli_query($db,$query);
+        if(mysqli_num_rows($res)>0){
 
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
+        while($row=mysqli_fetch_array($res)){
+        
+        echo "<tbody>";
+         echo "<tr>";
+           echo "<td></td>";
+            echo "<td>".$row['UserId']."</td>";
+            echo "<td>".$row['FirstName']."</td>";
+            echo "<td>".$row['LastName']."</td>";
+            echo "<td>".$row['AccessType']."</td>";
+            echo "<td>".$row['Department']."</td>";
+            echo "</tr>";
+            echo "</tbody>";
+        }
+      }
+?>
+          
+        
       </table>
     </div>
   </div>
