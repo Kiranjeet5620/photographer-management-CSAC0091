@@ -10,18 +10,18 @@ if (isset($_POST['submit'])) {
 
     $email = $_POST['email'];
     $pass = $_POST['password'];
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $dob = $_POST['dob'];
+    $fname = $_POST['firstname'];
+    $lname = $_POST['lastname'];
+    $dob = $_POST['Dob'];
    // $access =$_POST['acc'];
-    $phone = $_POST['phno'];
+    $phone = $_POST['phone'];
     //$depart = $_POST['deprt'];
-    $address = $_POST['add'];
-    $postal = $_POST['pcode'];
+    $address = $_POST['address'];
+    $postal = $_POST['postal'];
     
     $sql = "UPDATE user SET Email='$email',Password='$pass',FirstName='$fname',
             LastName='$lname',Dob='$dob',Phone='$phone',
-            Address='$address',Postal='$postal'  where UserId='$id'; ";
+            Address='$address',PostalCode='$postal'  where UserId='$id'; ";
     $result = mysqli_query($db, $sql);
     if (!empty($result)) {
         echo "User edited successfully";
