@@ -18,26 +18,27 @@ if (isset($_POST["submit"])) {
         $query = mysqli_query($db, $sql);
         $numrows = mysqli_num_rows($query);
         if ($numrows != 0) {
-            while ($rows = mysqli_fetch_assoc($query)) {
+            while ($rows = mysqli_fetch_array($query)) {
                 $dbusername = $rows['Email'];
                 $dbpassword = $rows['Password'];
                 $access = $rows['AccessType'];
+                $fname = $rows['FirstName'];
+                $lname = $rows['LastName'];
             }
-            
+            $_SESSION['username'] = $username;
+            $_SESSION['fname'] = $fname;
+            $_SESSION['lname'] = $lname;
+
             if ($username == $dbusername && $password == $dbpassword && $access == '1') {
-                session_start();
+
                 $_SESSION['username'] = $username;
 
                 /* Redirect browser */
                 header("Location: admin.html");
             } elseif ($username == $dbusername && $password == $dbpassword && $access == '3') {
-                session_start();
-                $_SESSION['username'] = $username;
-                $_SESSION['id']=$id;
-                $_SESSION['fname']=$row['FirstName'];
+                
                 header("Location: regularuser.php");
             } elseif ($username == $dbusername && $password == $dbpassword && $access == '2') {
-                session_start();
                 $_SESSION['username'] = $username;
                 header("Location: elevated.php");
             }

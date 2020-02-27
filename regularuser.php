@@ -159,7 +159,7 @@ if (isset($_GET['logout'])) {
         </tr>
         <tr>
           <td>Last name</td>
-          <td> <input type="text" name="lastname"></td>
+          <td> <input type="text" name="lastname" value="<?php echo $_SESSION['lname'];  ?>"></td>
         </tr>
         <tr>
           <td>Date of birth</td>
