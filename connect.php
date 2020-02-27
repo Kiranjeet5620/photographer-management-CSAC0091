@@ -22,10 +22,11 @@ if (isset($_POST["submit"])) {
                 $dbusername = $rows['Email'];
                 $dbpassword = $rows['Password'];
                 $access = $rows['AccessType'];
-                $fname = $rows['FirstName'];
-                $lname = $rows['LastName'];
+                $fname=$rows['FirstName'];
+                $lname=$rows['LastName'];
             }
-            $_SESSION['username'] = $username;
+            $_SESSION['username'] = $dbusername;
+            $_SESSION['password'] = $dbpassword;
             $_SESSION['fname'] = $fname;
             $_SESSION['lname'] = $lname;
 
@@ -36,7 +37,7 @@ if (isset($_POST["submit"])) {
                 /* Redirect browser */
                 header("Location: admin.html");
             } elseif ($username == $dbusername && $password == $dbpassword && $access == '3') {
-                
+
                 header("Location: regularuser.php");
             } elseif ($username == $dbusername && $password == $dbpassword && $access == '2') {
                 $_SESSION['username'] = $username;
