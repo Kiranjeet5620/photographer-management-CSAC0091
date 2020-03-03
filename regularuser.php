@@ -104,6 +104,8 @@ if (isset($_GET['logout'])) {
       top: 45%;
     }
   </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -132,67 +134,67 @@ if (isset($_GET['logout'])) {
 
   <div id="myprofile" class="tabcontent">
     <h2>User Profile</h2>
-    <form method="POST" action="#">
-   <!-- <button id="rqstbtn" onclick="myFunction()">Request Elevated Access</button>-->
-    <input id="rqstbtn" type="submit" name="req" value="Request Elevated Access" onclick="myFunction()" >
+    <form id="formABC" method="POST" action="javascript:void(0);">
+      <!-- <button id="rqstbtn" onclick="myFunction()">Request Elevated Access</button>-->
+      <input id="rqstbtn" type="submit" name="req" value="Request Elevated Access" onclick="myFunction()">
     </form>
     <p id="display"></p>
 
     <script>
-      function myFunction() {
-        document.getElementById("display").innerHTML = "Access Request is Pending Approval!!!!";
-        document.getElementById("rqstbtn").style.display = "none";
-        $(document).ready(function () {
+      //function myFunction() {
+      //document.getElementById("display").innerHTML = "Access Request is Pending Approval!!!!";
+      //document.getElementById("rqstbtn").style.display = "none";
+      $(document).ready(function() {
 
-$("#formABC").submit(function (e) {
+        $("#formABC").submit(function(e) {
 
-    //stop submitting the form to see the disabled button effect
-    e.preventDefault();
+          //stop submitting the form to see the disabled button effect
+          e.preventDefault();
 
-    //disable the submit button
-    $("#reqstbtn").attr("disabled", true);
+          //disable the submit button
+          $("#reqstbtn").attr("disabled", true);
 
-    return true;
+          return true;
 
-});
-});
-      }
+        });
+      });
+      
     </script>
-  <?php
-  include("config.php");
-  $id=$_SESSION['id'];
-  if (isset($_POST['submit'])) {
-  $sql="Update user SET ReqStatus='Active' where UserId='$id' ";
-  $result = mysqli_query($db, $sql);
-    if (!empty($result)) {
+    <?php
+    include("config.php");
+    $id = $_SESSION['id'];
+    if (isset($_POST['submit'])) {
+      $sql = "Update user SET ReqStatus='Active' where UserId='$id' ";
+      $result = mysqli_query($db, $sql);
+      if (!empty($result)) {
         echo "Access Request is Pending Approval";
-    } else {
+      } else {
         echo mysqli_error($sql);
+      }
     }
-  }
-  ?>
+    ?>
 
     <form method='POST' action="edituser.php">
       <table>
         <tr>
           <td>Email Address</td>
-          <td><input type="email" name="email" value=" <?php echo $_SESSION['username'];?>"></td>
+          <td><input type="email" name="email" value=" <?php echo $_SESSION['username']; ?>"></td>
         </tr>
         <tr>
           <td>Password</td>
-          <td><input type="text" name="password" value="<?php echo $_SESSION['password'];?>"></td>
+          <td><input type="text" name="password" value="<?php echo $_SESSION['password']; ?>"></td>
         </tr>
         <tr>
           <td>First name</td>
-          <td> <input type="text" name="firstname" value="<?php echo $_SESSION['fname'];?>"></td>
+          <td> <input type="text" name="firstname" value="<?php echo $_SESSION['fname']; ?>"></td>
         </tr>
         <tr>
           <td>Last name</td>
-          <td> <input type="text" name="lastname" value="<?php echo $_SESSION['lname'];?>"></td>
+          <td> <input type="text" name="lastname" value="<?php echo $_SESSION['lname']; ?>"></td>
         </tr>
         <tr>
           <td>Date of birth</td>
-          <td><input type="date" name="Dob" value="<?php echo $_SESSION['dob'];?>"></td>
+          <td><input type="date" name="Dob" value="<?php echo $_SESSION['dob']; ?>"></td>
         </tr>
         <tr>
           <td>Access Type</td>
@@ -204,7 +206,7 @@ $("#formABC").submit(function (e) {
         </tr>
         <tr>
           <td>Phone number</td>
-          <td> <input type="text" name="phone" value="<?php echo $_SESSION['phone'];?>"></td>
+          <td> <input type="text" name="phone" value="<?php echo $_SESSION['phone']; ?>"></td>
         </tr>
         <tr>
           <td>Department</td>
@@ -218,11 +220,11 @@ $("#formABC").submit(function (e) {
         </tr>
         <tr>
           <td>Address</td>
-          <td> <input type="text" name="address" value="<?php echo $_SESSION['add'];?>"></td>
+          <td> <input type="text" name="address" value="<?php echo $_SESSION['add']; ?>"></td>
         </tr>
         <tr>
           <td>Postal Code</td>
-          <td> <input type="text" name="postal" value="<?php echo $_SESSION['postal'];?>"></td>
+          <td> <input type="text" name="postal" value="<?php echo $_SESSION['postal']; ?>"></td>
         </tr>
         <tr>
           <td><input id="button" type="submit" name="submit" value="Edit"></td>
