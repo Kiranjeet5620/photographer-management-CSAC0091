@@ -144,6 +144,7 @@ if (isset($_GET['logout'])) {
   <?php
   include("config.php");
   $id=$_SESSION['id'];
+  $sql="Update user SET ReqStatus='Active' ";
   ?>
 
     <form method='POST' action="edituser.php">
