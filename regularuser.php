@@ -141,7 +141,10 @@ if (isset($_GET['logout'])) {
         document.getElementById("rqstbtn").style.display = "none";
       }
     </script>
-
+  <?php
+  include("config.php");
+  $id=$_SESSION['id'];
+  ?>
 
     <form method='POST' action="edituser.php">
       <table>
