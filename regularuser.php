@@ -88,7 +88,7 @@ if (isset($_GET['logout'])) {
     #rqstbtn {
       border-radius: 5px;
       position: relative;
-      left: 700px;
+      left: 600px;
       top: 100px;
     }
 
@@ -132,19 +132,44 @@ if (isset($_GET['logout'])) {
 
   <div id="myprofile" class="tabcontent">
     <h2>User Profile</h2>
-    <button id="rqstbtn" onclick="myFunction()">Request Elevated Access</button>
+    <form method="POST" action="#">
+   <!-- <button id="rqstbtn" onclick="myFunction()">Request Elevated Access</button>-->
+    <input id="rqstbtn" type="submit" name="req" value="Request Elevated Access" onclick="myFunction()" >
+    </form>
     <p id="display"></p>
 
     <script>
       function myFunction() {
-        document.getElementById("display").innerHTML = "Access Request is Pending Approval";
+        document.getElementById("display").innerHTML = "Access Request is Pending Approval!!!!";
         document.getElementById("rqstbtn").style.display = "none";
+        $(document).ready(function () {
+
+$("#formABC").submit(function (e) {
+
+    //stop submitting the form to see the disabled button effect
+    e.preventDefault();
+
+    //disable the submit button
+    $("#reqstbtn").attr("disabled", true);
+
+    return true;
+
+});
+});
       }
     </script>
   <?php
   include("config.php");
   $id=$_SESSION['id'];
-  $sql="Update user SET ReqStatus='Active' ";
+  if (isset($_POST['submit'])) {
+  $sql="Update user SET ReqStatus='Active' where UserId='$id' ";
+  $result = mysqli_query($db, $sql);
+    if (!empty($result)) {
+        echo "Access Request is Pending Approval";
+    } else {
+        echo mysqli_error($sql);
+    }
+  }
   ?>
 
     <form method='POST' action="edituser.php">

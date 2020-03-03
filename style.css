@@ -10,7 +10,7 @@
             text-align: right;
             
         }
-        button,#button {
+        button,#button,#rqstbtn {
             background-color: #4CAF50;
             color: white;
             padding: 5px 10px;
