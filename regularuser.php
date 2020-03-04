@@ -142,7 +142,7 @@ if (isset($_GET['logout'])) {
     include("config.php");
     $id = $_SESSION['id'];
     if (isset($_POST['req'])) {
-      $sql = "Update user SET ReqStatus='Active' where UserId='$id' ";
+      $sql = "Update user SET RequestId='$id', ReqStatus='Active' where UserId='$id' ";
       $result = mysqli_query($db, $sql);
       if (!empty($result)) {
         echo "Access Request is Pending Approval";
