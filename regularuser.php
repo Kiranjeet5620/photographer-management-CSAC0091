@@ -99,9 +99,9 @@ if (isset($_GET['logout'])) {
 
     #display {
 
-      position: absolute;
-      right: 200px;
-      top: 45%;
+      position: relative;
+      left: 600px;
+      top: 150px;
     }
   </style>
 
@@ -141,8 +141,8 @@ if (isset($_GET['logout'])) {
     <?php
     include("config.php");
     $id = $_SESSION['id'];
-    if (isset($_POST['submit'])) {
-      $sql = "Insert into user (ReqStatus)Values('Active') where UserId='$id' ";
+    if (isset($_POST['req'])) {
+      $sql = "Update user SET ReqStatus='Active' where UserId='$id' ";
       $result = mysqli_query($db, $sql);
       if (!empty($result)) {
         echo "Access Request is Pending Approval";
@@ -152,10 +152,12 @@ if (isset($_GET['logout'])) {
     }
     ?>
     <script>
-     
+     function myfunction(){
+       document.getElementById("display").innerHtml="Access request is pending approval!"
+       document.getElementById("rqstbtn").style.display="none"
+     }
     </script>
-
-    <form method='POST' action="edituser.php">
+   <form method='POST' action="edituser.php">
       <table>
         <tr>
           <td>Email Address</td>
