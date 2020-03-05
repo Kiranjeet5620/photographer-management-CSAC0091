@@ -134,7 +134,7 @@ if (isset($_GET['logout'])) {
   <div id="myprofile" class="tabcontent">
     <h2>User Profile</h2>
     <form method="POST" action="" id="request">
-      <button id="rqstbtn" name="req" onClick = "this.style.visibility= hidden;">Request Elevated Accessq</button>
+      <button id="rqstbtn" name="req" onClick="this.style.display= none;">Request Elevated Accessq</button>
       <!--<input id="rqstbtn" type="submit" name="req" value="Request Elevated Access">-->
     </form>
 

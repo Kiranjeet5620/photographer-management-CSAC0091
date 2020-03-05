@@ -121,9 +121,45 @@
       position: relative;
     }
 
-    #myTable tr:nth-child(odd) {
+    #myTable tr:nth-child(even) {
       background-color: lightgray
     }
+
+    a:link,
+a:visited,
+a:hover,
+a:active {
+    color: #000;
+    text-decoration: none;
+}
+th a.sort-by { 
+    padding-right: 17px;
+    position: relative;
+}
+a.sort-by:before,
+a.sort-by:after {
+    border: 4px solid transparent;
+    content: "";
+    display: block;
+    height: 0;
+    right: 5px;
+    top: 50%;
+    position: absolute;
+    width: 0;
+}
+a.sort-by:before {
+    border-bottom-color: #666;
+    margin-top: -9px;
+}
+a.sort-by:after {
+    border-top-color: #666;
+    margin-top: 1px;
+}
+th a,
+td a { 
+    display: block;
+    width: 100%;
+}
   </style>
 </head>
 
@@ -254,11 +290,12 @@
 
         <tr>
           <th><input type="checkbox"></th>
-          <th>User_ID</th>
-          <th>First_Name</th>
-          <th>Last_Name</th>
-          <th>Access_Type</th>
-          <th>Department</th>
+          <th scope="col"><a href="#" class="sort-by">User_Id</a></th>
+                 <th scope="col"><a href="#" class="sort-by" >First_Name</th>
+                <th scope="col"><a href="#" class="sort-by"  >Last_Name</th>
+               <th scope="col"><a href="#" class="sort-by">Access_Type</th>
+                 <th scope="col"><a href="#" class="sort-by">Department</th>
+
 
         </tr>
         <?php 
