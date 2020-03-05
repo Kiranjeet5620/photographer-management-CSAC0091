@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <style>
     td {
       padding-right: 15px;
@@ -95,19 +96,19 @@
       border-radius: 4px;
     }
 
-    #table1 {
+    #myTable {
       border-collapse: collapse;
       border-spacing: 0;
       border: 1px solid gray;
     }
 
-    #table1 th {
+    #myTable th {
       border: 1px solid gray;
       text-align: left;
       padding: 8px;
     }
 
-    #table1 td {
+    #myTable td {
       border: 1px solid gray;
       text-align: left;
       padding: 8px;
@@ -120,7 +121,7 @@
       position: relative;
     }
 
-    #table1 tr:nth-child(even) {
+    #myTable tr:nth-child(odd) {
       background-color: lightgray
     }
   </style>
@@ -240,8 +241,8 @@
             <div class="searchbox">
               <div class="search-container">
 
-                <input type="text" name="search">
-                <button>Search</button>
+                <input id="myInput" type="text" name="search" placeholder="Search..">
+                
               </div>
             </div>
           </td>
@@ -249,7 +250,7 @@
       </table>
     </div>
     <div id="table-scroll" style="width:600px;">
-      <table id="table1">
+      <table id="myTable">
 
         <tr>
           <th><input type="checkbox"></th>
@@ -271,7 +272,9 @@
         
         echo "<tbody>";
          echo "<tr>";
-           echo "<td></td>";
+         ?>
+         <td><input type="checkbox"></td>
+         <?php
             echo "<td>".$row['UserId']."</td>";
             echo "<td>".$row['FirstName']."</td>";
             echo "<td>".$row['LastName']."</td>";
@@ -297,7 +300,7 @@
       <button class="btn"><i class="fa fa-close"></i> Delete</button>
     </div>
     <div>
-      <table>
+      <table >
         <tr>
           <td>
           <td>Department</td>
@@ -314,8 +317,8 @@
             <div class="searchbox">
               <div class="search-container">
 
-                <input type="text" name="search">
-                <button id="search">Search</button>
+                <input id="myInput" type="text" name="search" placeholder="Search..">
+                
               </div>
             </div>
           </td>
@@ -326,9 +329,19 @@
         </tr>
       </table>
     </div>
+    <script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
 
     <div id="table-scroll" style="width:565px;">
-      <table id="table1">
+      <table id="myTable">
 
         <tr>
           <th><input type="checkbox"></th>
@@ -341,16 +354,18 @@
         </tr>
         <?php 
         include('config.php');
-        $query="Select RequestId,FirstName,LastName,Department,ReqStatus from user 
-        inner join Department on  user.Department=Department.D_id
-                where ReqStatus='Active' or 'Approved' or 'Declined'" ;
+        $query="Select RequestId,FirstName,LastName,DepartmentName,ReqStatus from user 
+        inner join Department on user.Department=Department.D_id 
+        where ReqStatus='Active' or 'Approved' or 'Declined'" ;
         $res=mysqli_query($db,$query);
         if(mysqli_num_rows($res)>0){
 
         while($row=mysqli_fetch_array($res)){
           echo "<tbody>";
-          echo "<tr>";
-            echo "<td></td>";
+          echo "<tr>"; ?>
+          <td><input type="checkbox"></td>
+          <?php
+            
              echo "<td>".$row['RequestId']."</td>";
              echo "<td>".$row['FirstName']."</td>";
              echo "<td>".$row['LastName']."</td>";
