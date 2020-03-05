@@ -99,9 +99,9 @@ if (isset($_GET['logout'])) {
 
     #display {
       position: absolute;
-      right: 600px;
-      top: 150px;
-      color:greenyellow;
+      right:300px;
+      top: 300px;
+      color: greenyellow;
     }
   </style>
 
@@ -134,30 +134,35 @@ if (isset($_GET['logout'])) {
   <div id="myprofile" class="tabcontent">
     <h2>User Profile</h2>
     <form method="POST" action="">
-      <!-- <button id="rqstbtn" onclick="myFunction()">Request Elevated Access</button>-->
-      <input id="rqstbtn" type="submit" name="req" value="Request Elevated Access" onclick="myFunction()">
+      <!--<button id="rqstbtn" onclick="myFunction()">Request Elevated Accessq</button>-->
+      <input id="rqstbtn" type="submit" name="req" value="Request Elevated Access">
     </form>
-    <p id="display"></p>
+    
+    <script>
+      $(function(){
+        $("#rqstbtn").on('click',function() {
+          $(this).hide();
+          $("#display").show();
+        });
+      });
+    </script>
+    <p id="display">
     <?php
     include("config.php");
     $id = $_SESSION['id'];
+    $r='R00'.rand(0,50);
     if (isset($_POST['req'])) {
-      $sql = "Update user SET RequestId='$id', ReqStatus='Active' where UserId='$id' ";
+      $sql = "Update user SET RequestId='$r', ReqStatus='Active' where UserId='$id' ";
       $result = mysqli_query($db, $sql);
       if (!empty($result)) {
-        echo "Access Request is Pending Approval";
+        echo "Access Request is Pending Approval!";
       } else {
         echo mysqli_error($sql);
       }
     }
     ?>
-    <script>
-     function myfunction(){
-       document.getElementById("display").innerHtml="Access request is pending approval!"
-       document.getElementById("rqstbtn").style.display="none"
-     }
-    </script>
-   <form method='POST' action="edituser.php">
+</p>
+    <form method='POST' action="edituser.php">
       <table>
         <tr>
           <td>Email Address</td>
