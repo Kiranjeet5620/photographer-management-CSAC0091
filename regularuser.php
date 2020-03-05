@@ -133,14 +133,14 @@ if (isset($_GET['logout'])) {
 
   <div id="myprofile" class="tabcontent">
     <h2>User Profile</h2>
-    <form method="POST" action="#">
+    <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
       <button id="rqstbtn" name="req" onclick="myFunction()">Request Elevated Accessq</button>
       <!--<input id="rqstbtn" type="submit" name="req" value="Request Elevated Access">-->
     </form>
     
     <script>
       function myFunction(){
-        document.getElementById("display");
+        document.getElementById("display").innerHTML="active";
         document.getElementById("rqstbtn").style.display="none";
       }
     </script>
