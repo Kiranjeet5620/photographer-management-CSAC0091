@@ -99,7 +99,7 @@ if (isset($_GET['logout'])) {
 
     #display {
       position: absolute;
-      right:300px;
+      right: 300px;
       top: 300px;
       color: greenyellow;
     }
@@ -133,33 +133,28 @@ if (isset($_GET['logout'])) {
 
   <div id="myprofile" class="tabcontent">
     <h2>User Profile</h2>
-    <form method="POST" action="" onclick="myFunction" id="rqst">
-      <button id="rqstbtn" name="req" >Request Elevated Accessq</button>
+    <form method="POST" action="" id="request">
+      <button id="rqstbtn" name="req" onClick = "this.style.visibility= hidden;">Request Elevated Accessq</button>
       <!--<input id="rqstbtn" type="submit" name="req" value="Request Elevated Access">-->
     </form>
-    
-    <script>
-      function myFunction(){
-        //document.getElementById("display").style.display="block";
-        document.getElementById("rqst").style.visibility="hidden";
-      }
-    </script>
+
+
     <p id="display">
-    <?php
-    include("config.php");
-    $id = $_SESSION['id'];
-    $r='R00'.rand(0,50);
-    if (isset($_POST['req'])) {
-      $sql = "Update user SET RequestId='$r', ReqStatus='Active' where UserId='$id' ";
-      $result = mysqli_query($db, $sql);
-      if (!empty($result)) {
-        echo "Access Request is Pending Approval!";
-      } else {
-        echo mysqli_error($sql);
+      <?php
+      include("config.php");
+      $id = $_SESSION['id'];
+      $r = 'R00' . rand(0, 50);
+      if (isset($_POST['req'])) {
+        $sql = "Update user SET RequestId='$r', ReqStatus='Active' where UserId='$id' ";
+        $result = mysqli_query($db, $sql);
+        if (!empty($result)) {
+          echo "Access Request is Pending Approval!";
+        } else {
+          echo mysqli_error($sql);
+        }
       }
-    }
-    ?>
-</p>
+      ?>
+    </p>
     <form method='POST' action="edituser.php">
       <table>
         <tr>
