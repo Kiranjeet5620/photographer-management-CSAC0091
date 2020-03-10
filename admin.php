@@ -339,10 +339,6 @@
 
   <div id="accessrequests" class="tabcontent">
     <h2>Access Requests</h2>
-    <div class="btns">
-      <form id='opr' method='POST' action='operation.php'>
-      
-    </div>
     <div>
       <table>
         <tr>
@@ -367,8 +363,7 @@
             </div>
           </td>
           <td>
-            <div><button class="button_group">Approve</button>
-              <button class="button_group">Decline</button></div>
+            <div></div>
           </td>
         </tr>
       </table>
@@ -410,9 +405,10 @@
             echo "<tbody>";
             echo "<tr>";
             $n=$row['RequestId'];
+            
             echo "<td>
               
-              <input type='checkbox' name='checkbox[]' value='$n' id='chk'>
+              <input type='checkbox' name='checkbox[]' value='[$n]' id='chk'>
               
             </td>";
 
@@ -427,6 +423,8 @@
         }
 
         ?>
+        <button class="button_group" name='Approve'>Approve</button>
+              <button class="button_group" name='Decline'>Decline</button>
         <button class="btn" name='Create'><i class="fa fa-plus-circle"></i> Create</button>&nbsp;&nbsp;&nbsp;
       <button class="btn" name='View'><i class="fa fa-eye"></i> View</button>&nbsp;&nbsp;&nbsp;
       <button class="btn" name='Edit'><i class="fa fa-pencil"></i> Edit</button>&nbsp;&nbsp;&nbsp;
