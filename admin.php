@@ -165,6 +165,10 @@
       display: block;
       width: 100%;
     }
+    #chk{
+      position: absolute;
+      left:-10px;
+    }
   </style>
 </head>
 
@@ -336,11 +340,12 @@
   <div id="accessrequests" class="tabcontent">
     <h2>Access Requests</h2>
     <div class="btns">
-      <form>  <input type='button' name='Create' value='Create'>&nbsp;&nbsp;&nbsp;</form>
-      <button class="btn"><i class="fa fa-plus-circle"></i> Create</button>&nbsp;&nbsp;&nbsp;
-      <button class="btn"><i class="fa fa-eye"></i> View</button>&nbsp;&nbsp;&nbsp;
-      <button class="btn"><i class="fa fa-pencil"></i> Edit</button>&nbsp;&nbsp;&nbsp;
-      <button class="btn" ><i class="fa fa-close"></i> Delete</button>
+      <form id='opr' method='POST' action='operation.php'>
+      <button class="btn" name='Create'><i class="fa fa-plus-circle"></i> Create</button>&nbsp;&nbsp;&nbsp;
+      <button class="btn" name='View'><i class="fa fa-eye"></i> View</button>&nbsp;&nbsp;&nbsp;
+      <button class="btn" name='Edit'><i class="fa fa-pencil"></i> Edit</button>&nbsp;&nbsp;&nbsp;
+      <button class="btn" name='Del'><i class="fa fa-close"></i> Delete</button>
+      </form>
     </div>
     <div>
       <table>
@@ -407,7 +412,11 @@
             echo "<tbody>";
             echo "<tr>";
             $n=$row['RequestId'];
-            echo "<td><input type='checkbox' name='checkbox[]' value='[$n]'></td>";
+            echo "<td>
+              <form id='opr' method='Post' action='operation.php'>
+              <input type='checkbox' name='checkbox[]' value='[$n]' id='chk'>
+              </form>
+            </td>";
 
             echo "<td>" . $row['RequestId'] . "</td>";
             echo "<td>" . $row['FirstName'] . "</td>";
