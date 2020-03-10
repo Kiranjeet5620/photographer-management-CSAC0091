@@ -165,9 +165,9 @@
       display: block;
       width: 100%;
     }
-    #chk{
-      position: absolute;
-      left:-10px;
+    #opr{
+      position: relative;
+      left:-2px;
     }
   </style>
 </head>
@@ -414,7 +414,7 @@
             $n=$row['RequestId'];
             echo "<td>
               <form id='opr' method='Post' action='operation.php'>
-              <input type='checkbox' name='checkbox[]' value='[$n]' id='chk'>
+              <input type='checkbox' name='checkbox' value='".$row['RequestId']."' id='chk'>
               </form>
             </td>";
 
