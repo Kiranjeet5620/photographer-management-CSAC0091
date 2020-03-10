@@ -341,11 +341,7 @@
     <h2>Access Requests</h2>
     <div class="btns">
       <form id='opr' method='POST' action='operation.php'>
-      <button class="btn" name='Create'><i class="fa fa-plus-circle"></i> Create</button>&nbsp;&nbsp;&nbsp;
-      <button class="btn" name='View'><i class="fa fa-eye"></i> View</button>&nbsp;&nbsp;&nbsp;
-      <button class="btn" name='Edit'><i class="fa fa-pencil"></i> Edit</button>&nbsp;&nbsp;&nbsp;
-      <button class="btn" name='Del'><i class="fa fa-close"></i> Delete</button>
-      </form>
+      
     </div>
     <div>
       <table>
@@ -405,7 +401,9 @@
         $query = "Select RequestId,FirstName,LastName,DepartmentName,ReqStatus from user 
         inner join Department on user.Department=Department.D_id 
         where ReqStatus='Active' or 'Approved' or 'Declined'";
-        $res = mysqli_query($db, $query);
+        $res = mysqli_query($db, $query);?>
+        <form id='opr' method='Post' action='operation.php'>
+          <?php
         if (mysqli_num_rows($res) > 0) {
 
           while ($row = mysqli_fetch_array($res)) {
@@ -413,9 +411,9 @@
             echo "<tr>";
             $n=$row['RequestId'];
             echo "<td>
-              <form id='opr' method='Post' action='operation.php'>
-              <input type='checkbox' name='checkbox' value='".$row['RequestId']."' id='chk'>
-              </form>
+              
+              <input type='checkbox' name='checkbox[]' value='$n' id='chk'>
+              
             </td>";
 
             echo "<td>" . $row['RequestId'] . "</td>";
@@ -427,8 +425,14 @@
             echo "</tbody>";
           }
         }
-        ?>
 
+        ?>
+        <button class="btn" name='Create'><i class="fa fa-plus-circle"></i> Create</button>&nbsp;&nbsp;&nbsp;
+      <button class="btn" name='View'><i class="fa fa-eye"></i> View</button>&nbsp;&nbsp;&nbsp;
+      <button class="btn" name='Edit'><i class="fa fa-pencil"></i> Edit</button>&nbsp;&nbsp;&nbsp;
+      <button class="btn" name='Del'><i class="fa fa-close"></i> Delete</button>
+      </form>
+</form>
       </table>
       
     </div>
