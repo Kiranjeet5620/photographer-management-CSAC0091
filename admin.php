@@ -336,10 +336,11 @@
   <div id="accessrequests" class="tabcontent">
     <h2>Access Requests</h2>
     <div class="btns">
+      <form>  <input type='button' name='Create' value='Create'>&nbsp;&nbsp;&nbsp;</form>
       <button class="btn"><i class="fa fa-plus-circle"></i> Create</button>&nbsp;&nbsp;&nbsp;
       <button class="btn"><i class="fa fa-eye"></i> View</button>&nbsp;&nbsp;&nbsp;
       <button class="btn"><i class="fa fa-pencil"></i> Edit</button>&nbsp;&nbsp;&nbsp;
-      <button class="btn"><i class="fa fa-close"></i> Delete</button>
+      <button class="btn" ><i class="fa fa-close"></i> Delete</button>
     </div>
     <div>
       <table>
@@ -406,7 +407,7 @@
             echo "<tbody>";
             echo "<tr>";
             $n=$row['RequestId'];
-            echo "<td><input type='checkbox' name='checkbox[$n]' value='[$n]'></td>";
+            echo "<td><input type='checkbox' name='checkbox[]' value='[$n]'></td>";
 
             echo "<td>" . $row['RequestId'] . "</td>";
             echo "<td>" . $row['FirstName'] . "</td>";
@@ -420,6 +421,7 @@
         ?>
 
       </table>
+      
     </div>
 
   </div>
