@@ -126,40 +126,45 @@
     }
 
     a:link,
-a:visited,
-a:hover,
-a:active {
-    color: #000;
-    text-decoration: none;
-}
-th a.sort-by { 
-    padding-right: 17px;
-    position: relative;
-}
-a.sort-by:before,
-a.sort-by:after {
-    border: 4px solid transparent;
-    content: "";
-    display: block;
-    height: 0;
-    right: 5px;
-    top: 50%;
-    position: absolute;
-    width: 0;
-}
-a.sort-by:before {
-    border-bottom-color: #666;
-    margin-top: -9px;
-}
-a.sort-by:after {
-    border-top-color: #666;
-    margin-top: 1px;
-}
-th a,
-td a { 
-    display: block;
-    width: 100%;
-}
+    a:visited,
+    a:hover,
+    a:active {
+      color: #000;
+      text-decoration: none;
+    }
+
+    th a.sort-by {
+      padding-right: 17px;
+      position: relative;
+    }
+
+    a.sort-by:before,
+    a.sort-by:after {
+      border: 4px solid transparent;
+      content: "";
+      display: block;
+      height: 0;
+      right: 5px;
+      top: 50%;
+      position: absolute;
+      width: 0;
+    }
+
+    a.sort-by:before {
+      border-bottom-color: #666;
+      margin-top: -9px;
+    }
+
+    a.sort-by:after {
+      border-top-color: #666;
+      margin-top: 1px;
+    }
+
+    th a,
+    td a {
+      display: block;
+      width: 100%;
+    }
   </style>
 </head>
 
@@ -278,7 +283,7 @@ td a {
               <div class="search-container">
 
                 <input id="myInput" type="text" name="search" placeholder="Search..">
-                
+
               </div>
             </div>
           </td>
@@ -291,39 +296,39 @@ td a {
         <tr>
           <th><input type="checkbox"></th>
           <th scope="col"><a href="#" class="sort-by">User_Id</a></th>
-                 <th scope="col"><a href="#" class="sort-by" >First_Name</th>
-                <th scope="col"><a href="#" class="sort-by"  >Last_Name</th>
-               <th scope="col"><a href="#" class="sort-by">Access_Type</th>
-                 <th scope="col"><a href="#" class="sort-by">Department</th>
+          <th scope="col"><a href="#" class="sort-by">First_Name</th>
+          <th scope="col"><a href="#" class="sort-by">Last_Name</th>
+          <th scope="col"><a href="#" class="sort-by">Access_Type</th>
+          <th scope="col"><a href="#" class="sort-by">Department</th>
 
 
         </tr>
-        <?php 
+        <?php
         include('config.php');
-        $query="SELECT * FROM `user`inner join 
+        $query = "SELECT * FROM `user`inner join 
         access inner join Department on user.AccessType=access.A_id AND user.Department=Department.D_id";
-        $res=mysqli_query($db,$query);
-        if(mysqli_num_rows($res)>0){
+        $res = mysqli_query($db, $query);
+        if (mysqli_num_rows($res) > 0) {
 
-        while($row=mysqli_fetch_array($res)){
-        
-        echo "<tbody>";
-         echo "<tr>";
-         ?>
-         <td><input type="checkbox"></td>
-         <?php
-            echo "<td>".$row['UserId']."</td>";
-            echo "<td>".$row['FirstName']."</td>";
-            echo "<td>".$row['LastName']."</td>";
-            echo "<td>".$row['AccessType']."</td>";
-            echo "<td>".$row['DepartmentName']."</td>";
+          while ($row = mysqli_fetch_array($res)) {
+
+            echo "<tbody>";
+            echo "<tr>";
+
+            echo "<td><input type='checkbox' ></td>";
+
+            echo "<td>" . $row['UserId'] . "</td>";
+            echo "<td>" . $row['FirstName'] . "</td>";
+            echo "<td>" . $row['LastName'] . "</td>";
+            echo "<td>" . $row['AccessType'] . "</td>";
+            echo "<td>" . $row['DepartmentName'] . "</td>";
             echo "</tr>";
             echo "</tbody>";
+          }
         }
-      }
-?>
-          
-        
+        ?>
+
+
       </table>
     </div>
   </div>
@@ -337,7 +342,7 @@ td a {
       <button class="btn"><i class="fa fa-close"></i> Delete</button>
     </div>
     <div>
-      <table >
+      <table>
         <tr>
           <td>
           <td>Department</td>
@@ -355,7 +360,7 @@ td a {
               <div class="search-container">
 
                 <input id="myInput" type="text" name="search" placeholder="Search..">
-                
+
               </div>
             </div>
           </td>
@@ -367,15 +372,15 @@ td a {
       </table>
     </div>
     <script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-</script>
+      $(document).ready(function() {
+        $("#myInput").on("keyup", function() {
+          var value = $(this).val().toLowerCase();
+          $("#myTable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+        });
+      });
+    </script>
 
     <div id="table-scroll" style="width:565px;">
       <table id="myTable">
@@ -389,31 +394,31 @@ $(document).ready(function(){
           <th>Request_Status</th>
 
         </tr>
-        <?php 
+        <?php
         include('config.php');
-        $query="Select RequestId,FirstName,LastName,DepartmentName,ReqStatus from user 
+        $query = "Select RequestId,FirstName,LastName,DepartmentName,ReqStatus from user 
         inner join Department on user.Department=Department.D_id 
-        where ReqStatus='Active' or 'Approved' or 'Declined'" ;
-        $res=mysqli_query($db,$query);
-        if(mysqli_num_rows($res)>0){
+        where ReqStatus='Active' or 'Approved' or 'Declined'";
+        $res = mysqli_query($db, $query);
+        if (mysqli_num_rows($res) > 0) {
 
-        while($row=mysqli_fetch_array($res)){
-          echo "<tbody>";
-          echo "<tr>"; ?>
-          <td><input type="checkbox"></td>
-          <?php
-            
-             echo "<td>".$row['RequestId']."</td>";
-             echo "<td>".$row['FirstName']."</td>";
-             echo "<td>".$row['LastName']."</td>";
-             echo "<td>".$row['DepartmentName']."</td>";
-             echo "<td>".$row['ReqStatus']."</td>";
-             echo "</tr>";
-             echo "</tbody>";
-         }
-       }
- ?>
-        
+          while ($row = mysqli_fetch_array($res)) {
+            echo "<tbody>";
+            echo "<tr>";
+            $n=$row['RequestId'];
+            echo "<td><input type='checkbox' name='checkbox[$n]' value='[$n]'></td>";
+
+            echo "<td>" . $row['RequestId'] . "</td>";
+            echo "<td>" . $row['FirstName'] . "</td>";
+            echo "<td>" . $row['LastName'] . "</td>";
+            echo "<td>" . $row['DepartmentName'] . "</td>";
+            echo "<td>" . $row['ReqStatus'] . "</td>";
+            echo "</tr>";
+            echo "</tbody>";
+          }
+        }
+        ?>
+
       </table>
     </div>
 

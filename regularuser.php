@@ -143,7 +143,7 @@ if (isset($_GET['logout'])) {
       <?php
       include("config.php");
       $id = $_SESSION['id'];
-      $r = 'R00' . rand(0, 50);
+      $r = 'R00' .$id;
       if (isset($_POST['req'])) {
         $sql = "Update user SET RequestId='$r', ReqStatus='Active' where UserId='$id' ";
         $result = mysqli_query($db, $sql);
