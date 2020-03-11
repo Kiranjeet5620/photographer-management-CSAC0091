@@ -408,7 +408,7 @@
             
             echo "<td>
               
-              <input type='checkbox' name='checkbox[]' value='[$n]' id='chk'>
+              <input type='checkbox' name='checkbox[]' value='$n' id='chk'>
               
             </td>";
 
