@@ -395,7 +395,7 @@
         include('config.php');
         $query = "Select RequestId,FirstName,LastName,DepartmentName,ReqStatus from user 
         inner join Department on user.Department=Department.D_id 
-        where ReqStatus='Active' or 'Approved' or 'Declined'";
+        where ReqStatus='Active' or ReqStatus= 'Approved' or ReqStatus='Declined'";
         $res = mysqli_query($db, $query);?>
         <form id='opr' method='Post' action='operation.php'>
           <?php

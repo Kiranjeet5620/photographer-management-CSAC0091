@@ -134,24 +134,66 @@ if (isset($_GET['logout'])) {
   <div id="myprofile" class="tabcontent">
     <h2>User Profile</h2>
     <form method="POST" action="" id="request">
-      <button id="rqstbtn" name="req" onClick="this.style.display= none;">Request Elevated Accessq</button>
+      <button id="rqstbtn" name="req" >Request Elevated Accessq</button>
       <!--<input id="rqstbtn" type="submit" name="req" value="Request Elevated Access">-->
     </form>
+
 
 
     <p id="display">
       <?php
       include("config.php");
-      $id = $_SESSION['id'];
-      $r = 'R00' .$id;
-      if (isset($_POST['req'])) {
-        $sql = "Update user SET RequestId='$r', ReqStatus='Active' where UserId='$id' ";
-        $result = mysqli_query($db, $sql);
-        if (!empty($result)) {
-          echo "Access Request is Pending Approval!";
-        } else {
-          echo mysqli_error($sql);
+      $sqll = "SELECT * FROM user WHERE ReqStatus='Approved'or ReqStatus='Declined' or ReqStatus='Active' ";
+      $query1 = mysqli_query($db, $sqll);
+      $numrows = mysqli_num_rows($query1);
+      if ($numrows != 0) {
+        while ($rows = mysqli_fetch_array($query1)) {
+          $status = $rows['ReqStatus'];
         }
+        if ($status == 'Approved') {
+          echo "Access request Approved"; ?>
+          <script type='text/javascript'>
+            $(document).ready(function() {
+              document.getElementById("rqstbtn").style.display = "none";
+            });
+          </script><?php
+        } 
+        elseif ($status == 'Declined') {
+          echo "Access request Declined"; ?>
+          <script type='text/javascript'>
+            $(document).ready(function() {
+              document.getElementById("rqstbtn").style.display = "none";
+            });
+          </script><?php
+        }
+        elseif ($status == 'Active') {
+          echo "Access Request is Pending Approval!"; ?>
+          <script type='text/javascript'>
+            $(document).ready(function() {
+              document.getElementById("rqstbtn").style.display = "none";
+            });
+          </script><?php
+        }
+      }
+      else{
+          $id = $_SESSION['id'];
+          $r = 'R00' . $id;
+          
+          if (isset($_POST['req'])) {
+            $sql = "UPDATE user SET RequestId='$r', ReqStatus='Active' where UserId='$id' ";
+            $result = mysqli_query($db, $sql);
+            if (!empty($result)) {
+            echo "Access Request is Pending Approval!"; ?>
+            <script type='text/javascript'>
+              $(document).ready(function() {
+                document.getElementById("rqstbtn").style.display = "none";
+              });
+            </script><?php
+            }
+          } 
+          else {
+            echo mysqli_error($sql);
+          }         
       }
       ?>
     </p>

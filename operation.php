@@ -8,7 +8,7 @@ if (isset($_POST['Del'])) { //to run PHP script on submit
         echo "selected";
         foreach ($_POST['checkbox'] as $selected) {
             echo $selected . "</br>";
-            $sql = "DELETE FROM user WHERE RequestId=$s0 elected";
+            $sql = "DELETE FROM user WHERE RequestId='$selected'";
             $query = mysqli_query($db, $sql);
             echo "deleted user successfully";
         }
