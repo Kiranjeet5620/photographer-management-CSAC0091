@@ -342,13 +342,14 @@
     <h2>Access Requests</h2>
     <div>
       <form id='opr' method='Post' action='operation.php'>
-        <div style="position:absolute,left:0%">
+        <div style="position:absolute;right:0%;">
           <button class="btn" name='Create'><i class="fa fa-plus-circle"></i> Create</button>&nbsp;&nbsp;&nbsp;
           <button class="btn" name='View'><i class="fa fa-eye"></i> View</button>&nbsp;&nbsp;&nbsp;
           <button class="btn" name='Edit'><i class="fa fa-pencil"></i> Edit</button>&nbsp;&nbsp;&nbsp;
           <button class="btn" name='Del'><i class="fa fa-close"></i> Delete</button>
         </div>
-        <table>
+        <table style="position:absolute;top:40px;">
+          
           <tr>
             <td>
             <td>Department</td>
@@ -388,8 +389,8 @@
       });
     </script>
 
-    <div id="table-scroll" style="width:565px;">
-      <table id="myTable">
+    <div id="table-scroll" style="width:565px;position:relative;top:100px;">
+      <table id="myTable" >
 
         <tr>
           <th><input type="checkbox"></th>
