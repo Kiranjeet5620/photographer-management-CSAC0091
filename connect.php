@@ -54,7 +54,11 @@ if (isset($_POST["submit"])) {
                 header("Location: elevated.php");
             }
         } else {
-            echo "Invalid username or password!";
+            echo '<script type="text/javascript">
+
+            window.alert = function () { alert("Incorrect username or password!"); }
+  
+  </script>';
         }
     } else {
         echo "All fields are required!";
