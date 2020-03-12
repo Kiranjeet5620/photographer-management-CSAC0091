@@ -165,9 +165,10 @@
       display: block;
       width: 100%;
     }
-    #opr{
+
+    #opr {
       position: relative;
-      left:-2px;
+      left: -2px;
     }
   </style>
 </head>
@@ -340,33 +341,41 @@
   <div id="accessrequests" class="tabcontent">
     <h2>Access Requests</h2>
     <div>
-      <table>
-        <tr>
-          <td>
-          <td>Department</td>
-          <td><select name="">
-              <option value="Technology">All</option>
-              <option value="Portrait Photography">Portrait Photography</option>
-              <option value="Technology">Technology</option>
-              <option value="Fashion Photography">Fashion Photography</option>
-              <option value="Sports Photography">Sports Photography</option>
-              <option value="Wildlife Photography">Wildlife Photography</option>
-            </select></td>
-          </td>
-          <td>
-            <div class="searchbox">
-              <div class="search-container">
+      <form id='opr' method='Post' action='operation.php'>
+        <div style="position:absolute,left:0%">
+          <button class="btn" name='Create'><i class="fa fa-plus-circle"></i> Create</button>&nbsp;&nbsp;&nbsp;
+          <button class="btn" name='View'><i class="fa fa-eye"></i> View</button>&nbsp;&nbsp;&nbsp;
+          <button class="btn" name='Edit'><i class="fa fa-pencil"></i> Edit</button>&nbsp;&nbsp;&nbsp;
+          <button class="btn" name='Del'><i class="fa fa-close"></i> Delete</button>
+        </div>
+        <table>
+          <tr>
+            <td>
+            <td>Department</td>
+            <td><select name="">
+                <option value="Technology">All</option>
+                <option value="Portrait Photography">Portrait Photography</option>
+                <option value="Technology">Technology</option>
+                <option value="Fashion Photography">Fashion Photography</option>
+                <option value="Sports Photography">Sports Photography</option>
+                <option value="Wildlife Photography">Wildlife Photography</option>
+              </select></td>
+            </td>
+            <td>
+              <div class="searchbox">
+                <div class="search-container">
 
-                <input id="myInput" type="text" name="search" placeholder="Search..">
+                  <input id="myInput" type="text" name="search" placeholder="Search..">
 
+                </div>
               </div>
-            </div>
-          </td>
-          <td>
-            <div></div>
-          </td>
-        </tr>
-      </table>
+            </td>
+            <td>
+              <button class="button_group" name='Approve'>Approve</button>
+              <button class="button_group" name='Decline'>Decline</button>
+            </td>
+          </tr>
+        </table>
     </div>
     <script>
       $(document).ready(function() {
@@ -396,43 +405,38 @@
         $query = "Select RequestId,FirstName,LastName,DepartmentName,ReqStatus from user 
         inner join Department on user.Department=Department.D_id 
         where ReqStatus='Active' or ReqStatus= 'Approved' or ReqStatus='Declined'";
-        $res = mysqli_query($db, $query);?>
+        $res = mysqli_query($db, $query); ?>
         <form id='opr' method='Post' action='operation.php'>
           <?php
-        if (mysqli_num_rows($res) > 0) {
+          if (mysqli_num_rows($res) > 0) {
 
-          while ($row = mysqli_fetch_array($res)) {
-            echo "<tbody>";
-            echo "<tr>";
-            $n=$row['RequestId'];
-            
-            echo "<td>
+            while ($row = mysqli_fetch_array($res)) {
+              echo "<tbody>";
+              echo "<tr>";
+              $n = $row['RequestId'];
+
+              echo "<td>
               
               <input type='checkbox' name='checkbox[]' value='$n' id='chk'>
               
             </td>";
 
-            echo "<td>" . $row['RequestId'] . "</td>";
-            echo "<td>" . $row['FirstName'] . "</td>";
-            echo "<td>" . $row['LastName'] . "</td>";
-            echo "<td>" . $row['DepartmentName'] . "</td>";
-            echo "<td>" . $row['ReqStatus'] . "</td>";
-            echo "</tr>";
-            echo "</tbody>";
+              echo "<td>" . $row['RequestId'] . "</td>";
+              echo "<td>" . $row['FirstName'] . "</td>";
+              echo "<td>" . $row['LastName'] . "</td>";
+              echo "<td>" . $row['DepartmentName'] . "</td>";
+              echo "<td>" . $row['ReqStatus'] . "</td>";
+              echo "</tr>";
+              echo "</tbody>";
+            }
           }
-        }
 
-        ?>
-        <button class="button_group" name='Approve'>Approve</button>
-              <button class="button_group" name='Decline'>Decline</button>
-        <button class="btn" name='Create'><i class="fa fa-plus-circle"></i> Create</button>&nbsp;&nbsp;&nbsp;
-      <button class="btn" name='View'><i class="fa fa-eye"></i> View</button>&nbsp;&nbsp;&nbsp;
-      <button class="btn" name='Edit'><i class="fa fa-pencil"></i> Edit</button>&nbsp;&nbsp;&nbsp;
-      <button class="btn" name='Del'><i class="fa fa-close"></i> Delete</button>
-      </form>
-</form>
+          ?>
+
+
+
       </table>
-      
+      </form>
     </div>
 
   </div>
