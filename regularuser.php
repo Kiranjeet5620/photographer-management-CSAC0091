@@ -99,9 +99,9 @@ if (isset($_GET['logout'])) {
 
     #display {
       position: absolute;
-      right: 300px;
+      right: 200px;
       top: 300px;
-      color: greenyellow;
+      color: green;
     }
   </style>
 
@@ -134,7 +134,7 @@ if (isset($_GET['logout'])) {
   <div id="myprofile" class="tabcontent">
     <h2>User Profile</h2>
     <form method="POST" action="" id="request">
-      <button id="rqstbtn" name="req" >Request Elevated Accessq</button>
+      <button id="rqstbtn" name="req">Request Elevated Access</button>
       <!--<input id="rqstbtn" type="submit" name="req" value="Request Elevated Access">-->
     </form>
 
@@ -143,59 +143,51 @@ if (isset($_GET['logout'])) {
     <p id="display">
       <?php
       include("config.php");
-      $sqll = "SELECT * FROM user WHERE ReqStatus='Approved'or ReqStatus='Declined' or ReqStatus='Active' ";
-      $query1 = mysqli_query($db, $sqll);
-      $numrows = mysqli_num_rows($query1);
+      $id = $_SESSION['id'];
+      $sql = "SELECT ReqStatus FROM user where UserId='$id' ";
+      $query = mysqli_query($db, $sql);
+      $numrows = mysqli_num_rows($query);
       if ($numrows != 0) {
-        while ($rows = mysqli_fetch_array($query1)) {
+        while ($rows = mysqli_fetch_array($query)) {
           $status = $rows['ReqStatus'];
         }
+        echo $status;
         if ($status == 'Approved') {
-          echo "Access request Approved"; ?>
+          echo " Access request Approved"; ?>
           <script type='text/javascript'>
-            $(document).ready(function() {
-              document.getElementById("rqstbtn").style.display = "none";
-            });
+            document.getElementById("rqstbtn").style.display = "none";
           </script><?php
-        } 
-        elseif ($status == 'Declined') {
-          echo "Access request Declined"; ?>
+                  } elseif ($status == 'Declined') {
+                    echo " Access request Declined"; ?>
           <script type='text/javascript'>
-            $(document).ready(function() {
-              document.getElementById("rqstbtn").style.display = "none";
-            });
+            document.getElementById("rqstbtn").style.display = "none";
           </script><?php
-        }
-        elseif ($status == 'Active') {
-          echo "Access Request is Pending Approval!"; ?>
+                  } elseif ($status == 'Active') {
+                    echo " Access Request is Pending Approval!"; ?>
           <script type='text/javascript'>
-            $(document).ready(function() {
-              document.getElementById("rqstbtn").style.display = "none";
-            });
+            document.getElementById("rqstbtn").style.display = "none";
           </script><?php
-        }
-      }
-      else{
-          $id = $_SESSION['id'];
-          $r = 'R00' . $id;
-          
-          if (isset($_POST['req'])) {
-            $sql = "UPDATE user SET RequestId='$r', ReqStatus='Active' where UserId='$id' ";
-            $result = mysqli_query($db, $sql);
-            if (!empty($result)) {
-            echo "Access Request is Pending Approval!"; ?>
-            <script type='text/javascript'>
-              $(document).ready(function() {
+                  } elseif ($status == '') {
+                    $id = $_SESSION['id'];
+                    $r = 'R00' . $id;
+
+                    if (isset($_POST['req'])) {
+                      $sql = "UPDATE user SET RequestId='$r', ReqStatus='Active' where UserId='$id' ";
+                      $result = mysqli_query($db, $sql);
+                      if (!empty($result)) {
+                        echo " Access Request is Pending Approval!"; ?>
+              <script type='text/javascript'>
                 document.getElementById("rqstbtn").style.display = "none";
-              });
-            </script><?php
-            }
-          } 
-          else {
-            echo mysqli_error($sql);
-          }         
-      }
-      ?>
+              </script><?php
+                      }
+                    }
+                  } else {
+                    echo mysqli_error($sql);
+                  }
+                } else {
+                  echo "nullll!";
+                }
+                        ?>
     </p>
     <form method='POST' action="edituser.php">
       <table>
