@@ -101,7 +101,7 @@ if (isset($_GET['logout'])) {
       position: absolute;
       right: 200px;
       top: 300px;
-      color: green;
+      color: darkgreen;
     }
   </style>
 
