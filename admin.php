@@ -176,7 +176,7 @@
 <body>
 
   <h1>PHOTOGRAPHER MANAGEMENT</h1>
-  <a id="logout" href="login.html">Logout</a>
+  <a id="logout" href="login.php">Logout</a>
 
   <div class="tab">
     <button class="tablinks" onclick="openCity(event, 'welcome')" id="defaultOpen">Welcome</button>

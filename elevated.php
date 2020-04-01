@@ -115,12 +115,12 @@
 <body>
 
   <h1>PHOTOGRAPHER MANAGEMENT</h1>
-  <a id="logout" href="login.html">Logout</a>
+  <a id="logout" href="login.php">Logout</a>
 
   <div class="tab">
-    <button class="tablinks" onclick="openCity(event, 'welcome')" id="defaultOpen">Welcome</button>
-    <button class="tablinks" onclick="openCity(event, 'myprofile')">My Profile</button>
-    <button class="tablinks" onclick="openCity(event, 'users')">Users</button>
+    <button class="tablinks" onclick="openTab(event, 'welcome')" id="defaultOpen">Welcome</button>
+    <button class="tablinks" onclick="openTab(event, 'myprofile')">My Profile</button>
+    <button class="tablinks" onclick="openTab(event, 'users')">Users</button>
 
   </div>
 
@@ -428,7 +428,7 @@
     </div>
   </div>
   <script>
-    function openCity(evt, eventName) {
+    function openTab(evt, eventName) {
       var i, tabcontent, tablinks;
       tabcontent = document.getElementsByClassName("tabcontent");
       for (i = 0; i < tabcontent.length; i++) {
