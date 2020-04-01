@@ -1,8 +1,7 @@
 <html>
 <head>
     
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
+        
     
 </head>
 
@@ -61,9 +60,12 @@ if (isset($_POST["submit"])) {
                 $_SESSION['username'] = $username;
                 header("Location: elevated.php");
             }
-        } else { 
+        } else {
+            header("Location: login.php");
             ?>
+            <div style="position:absolute;top:50%;right:50%">
             <div class='alert alert-primary'>Incorrect username or password!</div>
+        </div>
             <?php
         }
     } else {
