@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html>
@@ -8,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="pass.js"></script>
+
     <style>
         span {
             position: absolute;
@@ -43,8 +43,7 @@
                     </td>
                     <td>
                         <input id="Password" type="password" name="password" value=""></input>
-                        <span><i class="fa fa-eye-slash" aria-hidden="true" id="password"></i></span>
-
+                        <!--<span><i class="fa fa-eye-slash" aria-hidden="true" id="password"></i></span>-->
                     </td>
                 </tr>
                 <tr>

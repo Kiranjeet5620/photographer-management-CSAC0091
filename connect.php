@@ -1,3 +1,11 @@
+<html>
+<head>
+    
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    
+</head>
+
 <?php
 include("config.php");
 // Starting the session, necessary 
@@ -53,14 +61,14 @@ if (isset($_POST["submit"])) {
                 $_SESSION['username'] = $username;
                 header("Location: elevated.php");
             }
-        } else {
-            echo '<script type="text/javascript">
-
-            window.alert = function () { alert("Incorrect username or password!"); }
-  
-  </script>';
+        } else { 
+            ?>
+            <div class='alert alert-primary'>Incorrect username or password!</div>
+            <?php
         }
     } else {
         echo "All fields are required!";
     }
 }
+?>
+</html>
