@@ -1,8 +1,17 @@
+<html>
+<head>
+    
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    
+</head>
+<body style="background-color: #f1f1f1;">
+
 <?php
 //Step1
 include("config.php");
 
-echo "hi";
+
 if (isset($_POST['submit'])) {
 
     $email = $_POST['email'];
@@ -24,7 +33,7 @@ if (isset($_POST['submit'])) {
         <div style="position:absolute;top:40%;right:40%;">
 
             <div class='alert alert-success'>
-                <a href="login.php" class="close" data-dismiss="alert">&times;</a>
+                <a href="admin.php" class="close" data-dismiss="alert">&times;</a>
                 User added successfully.
             </div>
         </div>
@@ -34,3 +43,5 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>
+</body>
+</html>

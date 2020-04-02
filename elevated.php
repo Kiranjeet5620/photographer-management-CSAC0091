@@ -5,8 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <style>
+    td {
+      padding-right: 15px;
+      padding-bottom: 5px;
+      text-align: right;
+    }
+
     * {
       box-sizing: border-box
     }
@@ -62,10 +68,15 @@
       top: 300px;
     }
 
-    td {
-      padding-right: 15px;
-      padding-bottom: 5px;
+    .btns {
       text-align: right;
+    }
+
+    #table {
+      border: 1px solid black;
+      width: 50%;
+      font-size: 20px;
+      text-align: center;
     }
 
     form {
@@ -73,44 +84,94 @@
       left: 380px;
     }
 
-    .btns {
-      text-align: right;
+    .button_group {
+      border-radius: 0%;
+      margin: -2px;
+      border: 1px solid black;
+
     }
 
     #search {
       background-color: gray;
       border-radius: 4px;
     }
-    #table1 {
-            border-collapse: collapse;
-            border-spacing: 0;
-            width: 50%;
-            border: 1px solid gray;
-        }
 
-        #table1 th{
-            border: 1px solid gray;
-            text-align: left;
-            padding: 8px;
-        }
-        #table1 td{
-            border: 1px solid gray;
-            text-align: left;
-            padding: 8px;
-        }
-        #table-scroll {
-            height: 200px;
-            width: 527px;
-            overflow: auto;
-            margin-top: 20px;
-            position: relative;
-        }
+    #myTable {
+      border-collapse: collapse;
+      border-spacing: 0;
+      border: 1px solid gray;
+    }
 
-        #table1 tr:nth-child(even) {
-            background-color: lightgray;
-        }
-  </style>
-</head>
+    #myTable th {
+      border: 1px solid gray;
+      text-align: left;
+      padding: 8px;
+    }
+
+    #myTable td {
+      border: 1px solid gray;
+      text-align: left;
+      padding: 8px;
+    }
+
+    #table-scroll {
+      height: 200px;
+      overflow: auto;
+      margin-top: 20px;
+      position: relative;
+    }
+
+    #myTable tr:nth-child(even) {
+      background-color: lightgray
+    }
+
+    a:link,
+    a:visited,
+    a:hover,
+    a:active {
+      color: #000;
+      text-decoration: none;
+    }
+
+    th a.sort-by {
+      padding-right: 17px;
+      position: relative;
+    }
+
+    a.sort-by:before,
+    a.sort-by:after {
+      border: 4px solid transparent;
+      content: "";
+      display: block;
+      height: 0;
+      right: 5px;
+      top: 50%;
+      position: absolute;
+      width: 0;
+    }
+
+    a.sort-by:before {
+      border-bottom-color: #666;
+      margin-top: -9px;
+    }
+
+    a.sort-by:after {
+      border-top-color: #666;
+      margin-top: 1px;
+    }
+
+    th a,
+    td a {
+      display: block;
+      width: 100%;
+    }
+
+    #opr {
+      position: relative;
+      left: -2px;
+    }
+    </style>
+    </head>
 
 <body>
 
@@ -213,217 +274,53 @@
             <div class="searchbox">
               <div class="search-container">
 
-                <input type="text" name="search">
-                <button id="search">Search</button>
+                <input id="myInput" type="text" name="search" placeholder="Search..">
+
               </div>
             </div>
           </td>
         </tr>
       </table>
     </div>
-    <div id="table-scroll">
-      <table id="table1">
+    <div id="table-scroll" style="width:600px;">
+      <table id="myTable">
 
         <tr>
           <th><input type="checkbox"></th>
-          <th>User_ID</th>
-          <th>First_Name</th>
-          <th>Last_Name</th>
-          <th>Access_Type</th>
-          <th>Department</th>
+          <th scope="col"><a href="#" class="sort-by">User_Id</a></th>
+          <th scope="col"><a href="#" class="sort-by">First_Name</th>
+          <th scope="col"><a href="#" class="sort-by">Last_Name</th>
+          <th scope="col"><a href="#" class="sort-by">Access_Type</th>
+          <th scope="col"><a href="#" class="sort-by">Department</th>
+
 
         </tr>
-        <tbody>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+        <?php
+        include('config.php');
+        $query = "SELECT * FROM `user`inner join 
+        access inner join Department on user.AccessType=access.A_id AND user.Department=Department.D_id";
+        $res = mysqli_query($db, $query);
+        if (mysqli_num_rows($res) > 0) {
 
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+          while ($row = mysqli_fetch_array($res)) {
 
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            echo "<tbody>";
+            echo "<tr>";
 
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            echo "<td><input type='checkbox' ></td>";
 
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            echo "<td>" . $row['UserId'] . "</td>";
+            echo "<td>" . $row['FirstName'] . "</td>";
+            echo "<td>" . $row['LastName'] . "</td>";
+            echo "<td>" . $row['AccessType'] . "</td>";
+            echo "<td>" . $row['DepartmentName'] . "</td>";
+            echo "</tr>";
+            echo "</tbody>";
+          }
+        }
+        ?>
 
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
+
       </table>
     </div>
   </div>
