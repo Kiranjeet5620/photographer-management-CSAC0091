@@ -20,8 +20,17 @@ if (isset($_POST['submit'])) {
                      Values('$email','$pass','$fname','$lname','$dob','$access','$phone','$depart','$address','$postal') ";
     $result = mysqli_query($db, $sql);
     if (!empty($result)) {
-        echo "User added successfully";
+        ?>
+        <div style="position:absolute;top:40%;right:40%;">
+
+            <div class='alert alert-success'>
+                <a href="login.php" class="close" data-dismiss="alert">&times;</a>
+                User added successfully.
+            </div>
+        </div>
+        <?php
     } else {
         echo mysqli_error($sql);
     }
 }
+?>
