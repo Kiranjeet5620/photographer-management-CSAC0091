@@ -1,3 +1,29 @@
+<?php
+include("config.php");
+// Starting the session, to use and 
+// store data in session variable 
+session_start();
+echo $_SESSION['username'];
+echo $_SESSION['id'];
+// If the session variable is empty, this  
+// means the user is yet to login 
+// User will be sent to 'login.php' page 
+// to allow the user to login 
+if (!isset($_SESSION['username'])) {
+  $_SESSION['msg'] = "You have to log in first";
+  header('location: login.php');
+}
+
+// Logout button will destroy the session, and 
+// will unset the session variables 
+// User will be headed to 'login.php' 
+// after loggin out 
+if (isset($_GET['logout'])) {
+  session_destroy();
+  unset($_SESSION['username']);
+  header("location: login.php");
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -170,8 +196,19 @@
       position: relative;
       left: -2px;
     }
-    </style>
-    </head>
+  </style>
+  <script>
+    $(document).ready(function() {
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+  </script>
+
+</head>
 
 <body>
 
@@ -191,27 +228,27 @@
 
   <div id="myprofile" class="tabcontent">
     <h2>Edit User</h2>
-    <form>
+    <form method='POST' action="edituser.php">
       <table>
         <tr>
           <td>Email Address</td>
-          <td><input type="email" name="email"></td>
+          <td><input type="email" name="email" value=" <?php echo $_SESSION['username']; ?>"></td>
         </tr>
         <tr>
           <td>Password</td>
-          <td><input type="password" name="password"></td>
+          <td><input type="text" name="password" value="<?php echo $_SESSION['password']; ?>"></td>
         </tr>
         <tr>
           <td>First name</td>
-          <td> <input type="text" name="firstname"></td>
+          <td> <input type="text" name="firstname" value="<?php echo $_SESSION['fname']; ?>"></td>
         </tr>
         <tr>
           <td>Last name</td>
-          <td> <input type="text" name="lastname"></td>
+          <td> <input type="text" name="lastname" value="<?php echo $_SESSION['lname']; ?>"></td>
         </tr>
         <tr>
           <td>Date of birth</td>
-          <td><input type="date" name="DateofBirth" style="width:172px;"></td>
+          <td><input type="date" name="Dob" value="<?php echo $_SESSION['dob']; ?>"></td>
         </tr>
         <tr>
           <td>Access Type</td>
@@ -223,7 +260,7 @@
         </tr>
         <tr>
           <td>Phone number</td>
-          <td> <input type="tel" name="phoneno"></td>
+          <td> <input type="text" name="phone" value="<?php echo $_SESSION['phone']; ?>"></td>
         </tr>
         <tr>
           <td>Department</td>
@@ -237,14 +274,14 @@
         </tr>
         <tr>
           <td>Address</td>
-          <td> <input type="text" name="lastname"></td>
+          <td> <input type="text" name="address" value="<?php echo $_SESSION['add']; ?>"></td>
         </tr>
         <tr>
           <td>Postal Code</td>
-          <td> <input type="text" name="lastname"></td>
+          <td> <input type="text" name="postal" value="<?php echo $_SESSION['postal']; ?>"></td>
         </tr>
         <tr>
-          <td><input id="button" type="button" value="Edit"></td>
+          <td><input id="button" type="submit" name="submit" value="Edit"></td>
         </tr>
       </table>
     </form>

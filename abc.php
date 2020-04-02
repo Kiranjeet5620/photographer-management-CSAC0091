@@ -17,7 +17,15 @@
           </script><?php
         } 
         elseif ($status == 'Declined') {
-          echo "Access request Declined"; ?>
+          ?>
+            <div style="position:absolute;top:40%;right:40%;">
+
+                <div class='alert alert-warning'>
+                    <a href="login.php" class="close" data-dismiss="alert">&times;</a>
+                    Access Request Declined!
+                </div>
+            </div>
+            
           <script type='text/javascript'>
             $(document).ready(function() {
               document.getElementById("rqstbtn").style.display = "none";
@@ -25,7 +33,15 @@
           </script><?php
         }
         elseif ($status == 'Active') {
-          echo "Access Request is Pending Approval!"; ?>
+          ?>
+            <div style="position:absolute;top:40%;right:40%;">
+
+                <div class='alert alert-primary'>
+                    <a href="login.php" class="close" data-dismiss="alert">&times;</a>
+                    Access Request is pending Approval!
+                </div>
+            </div>
+            
           <script type='text/javascript'>
             $(document).ready(function() {
               document.getElementById("rqstbtn").style.display = "none";
@@ -41,7 +57,15 @@
             $sql = "UPDATE user SET RequestId='$r', ReqStatus='Active' where UserId='$id' ";
             $result = mysqli_query($db, $sql);
             if (!empty($result)) {
-            echo "Access Request is Pending Approval!"; ?>
+              ?>
+              <div style="position:absolute;top:40%;right:40%;">
+  
+                  <div class='alert alert-primary'>
+                      <a href="regularuser.php" class="close" data-dismiss="alert">&times;</a>
+                      Access Request is pending Approval!
+                  </div>
+              </div>
+              <?php ?>
             <script type='text/javascript'>
               $(document).ready(function() {
                 document.getElementById("rqstbtn").style.display = "none";
