@@ -66,14 +66,23 @@ if (isset($_POST["submit"])) {
             ?>
             <div style="position:absolute;top:40%;right:40%;">
 
-            <div class='alert alert-warning'>
-                <a href="login.php" class="close" data-dismiss="alert">&times;</a>
-                <strong>Invalid! </strong>username or password!</div>
-        </div>
+                <div class='alert alert-danger'>
+                    <a href="login.php" class="close" data-dismiss="alert">&times;</a>
+                    <strong>Invalid! </strong>username or password!
+                </div>
+            </div>
             <?php
         }
     } else {
-        echo "All fields are required!";
+        ?>
+        <div style="position:absolute;top:40%;right:40%;">
+
+            <div class='alert alert-warning'>
+                <a href="login.php" class="close" data-dismiss="alert">&times;</a>
+                All fields are required!
+            </div>
+        </div>
+        <?php
     }
 }
 ?>
