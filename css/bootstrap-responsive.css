@@ -78,6 +78,7 @@
   .hidden-tablet {
     display: none !important;
   }
+  
 }
 
 @media (max-width: 767px) {
