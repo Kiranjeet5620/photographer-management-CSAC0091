@@ -32,6 +32,11 @@ if (isset($_GET['logout'])) {
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- table sorter links below-->
+ 
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js">
+ </script>
   <style>
     td {
       padding-right: 15px;
@@ -207,6 +212,26 @@ if (isset($_GET['logout'])) {
       });
     });
   </script>
+   
+    <script>
+        $(function(){
+          $("#myDummyTable").tablesorter({
+		  widgets: ['zebra',"filter"],
+		   widgetOptions : {
+		   filter_functions : {
+
+         function(e, n, f, i, $r, c, data) {
+          return e === f;
+        },
+
+		  }
+		  }
+		  
+		  });
+        });
+    </script>
+
+
 
 </head>
 
@@ -322,15 +347,13 @@ if (isset($_GET['logout'])) {
     <div id="table-scroll" style="width:600px;">
       <table id="myTable">
 
-        <tr>
+      <tr>
           <th><input type="checkbox"></th>
-          <th scope="col"><a href="#" class="sort-by">User_Id</a></th>
-          <th scope="col"><a href="#" class="sort-by">First_Name</th>
-          <th scope="col"><a href="#" class="sort-by">Last_Name</th>
-          <th scope="col"><a href="#" class="sort-by">Access_Type</th>
-          <th scope="col"><a href="#" class="sort-by">Department</th>
-
-
+          <th>User_Id</th>
+          <th>First_Name</th>
+          <th>Last_Name</th>
+          <th>Access_Type</th>
+          <th>Department</th>
         </tr>
         <?php
         include('config.php');
