@@ -34,8 +34,8 @@ if (isset($_GET['logout'])) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <!-- table sorter links below-->
-
-  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+ 
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js">
   </script>
   <style>
@@ -346,15 +346,18 @@ if (isset($_GET['logout'])) {
       </table>
     </div>
     <div id="table-scroll" style="width:600px;">
-      <table id="myTable" class='tablesorter'>
+      <table id="myTable" class='tablesorter tablesorter-default'>
+      <tr class="tablesorter-headerRow">
+          <th class="tablesorter-header" data-column="0"><div class="tablesorter-header-inner"><input type="checkbox"></div></th>
+		 <!--<script>
+		  document.getElementById("hide").style.visibility='hidden';
+		  </script>-->
+          <th class="tablesorter-header" data-column="1"><div class="tablesorter-header-inner">User_Id</div></th>
+          <th class="tablesorter-header" data-column="2"><div class="tablesorter-header-inner">First_Name</div></th>
+          <th class="tablesorter-header" data-column="3"><div class="tablesorter-header-inner">Last_Name</div></th>
+          <th class="tablesorter-header" data-column="4"><div class="tablesorter-header-inner">Access_Type</div></th>
+          <th class="tablesorter-header" data-column="5"><div class="tablesorter-header-inner">Department</div></th>
 
-        <tr>
-          <th><input type="checkbox"></th>
-          <th>User_Id</th>
-          <th>First_Name</th>
-          <th>Last_Name</th>
-          <th>Access_Type</th>
-          <th>Department</th>
         </tr>
         <?php
         include('config.php');
