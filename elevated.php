@@ -30,13 +30,14 @@ if (isset($_GET['logout'])) {
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="sort.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <!-- table sorter links below-->
- 
-  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
+
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js">
- </script>
+  </script>
   <style>
     td {
       padding-right: 15px;
@@ -212,24 +213,24 @@ if (isset($_GET['logout'])) {
       });
     });
   </script>
-   
-    <script>
-        $(function(){
-          $("#myDummyTable").tablesorter({
-		  widgets: ['zebra',"filter"],
-		   widgetOptions : {
-		   filter_functions : {
 
-         function(e, n, f, i, $r, c, data) {
-          return e === f;
-        },
+  <script>
+    $(function() {
+      $("#myTable").tablesorter({
+        widgets: ['zebra', "filter"],
+        widgetOptions: {
+          filter_functions: {
 
-		  }
-		  }
-		  
-		  });
-        });
-    </script>
+            function(e, n, f, i, $r, c, data) {
+              return e === f;
+            },
+
+          }
+        }
+
+      });
+    });
+  </script>
 
 
 
@@ -345,9 +346,9 @@ if (isset($_GET['logout'])) {
       </table>
     </div>
     <div id="table-scroll" style="width:600px;">
-      <table id="myTable">
+      <table id="myTable" class='tablesorter'>
 
-      <tr>
+        <tr>
           <th><input type="checkbox"></th>
           <th>User_Id</th>
           <th>First_Name</th>
@@ -364,7 +365,7 @@ if (isset($_GET['logout'])) {
 
           while ($row = mysqli_fetch_array($res)) {
 
-            echo "<tbody>";
+            echo "<tbody id='table-scroll'>";
             echo "<tr>";
 
             echo "<td><input type='checkbox' ></td>";
