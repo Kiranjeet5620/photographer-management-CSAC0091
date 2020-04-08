@@ -1,31 +1,30 @@
-
-  #myTable th td {
+#myTable th td {
     border-collapse: collapse;
     border-spacing: 0;
     border: 1px solid gray;
-        text-align: left;
-    padding: 8px;
     
-  }
-
-
-   tbody  #table-scroll {
+    
+}
+#myTable th{
+    text-align: left;
+    padding: 8px;
+}
+#myTable td{
+    text-align: left;
+    padding: 8px;
+}
+tbody  #table-scroll {
 	  
-      height: 200px;
-      overflow: auto;
-      margin-top: 20px;
-      position: relative;
-      height: 200px;
+    height: 200px;
     overflow: auto;
     margin-top: 20px;
     position: relative;
-    }
+}
 
-    #myTable tr:nth-child(even) {
-      background-color: lightgray;
-	  
-    }
-	.tablesorter-default .header,
+#myTable tr:nth-child(even) {
+    background-color: lightgray;  
+}
+.tablesorter-default .header,
 .tablesorter-default .tablesorter-header {
 	background-image: url(data:image/gif;base64,R0lGODlhFQAJAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAkAAAIXjI+AywnaYnhUMoqt3gZXPmVg94yJVQAAOw==);
 	background-position: center right;

@@ -146,6 +146,12 @@ if (isset($_GET['logout'])) {
       padding: 8px;
     }
 
+    #table-scroll {
+      height: 200px;
+      overflow: auto;
+      margin-top: 20px;
+      position: relative;
+    }
 
     #myTable tr:nth-child(even) {
       background-color: lightgray
@@ -297,10 +303,7 @@ if (isset($_GET['logout'])) {
         </tr>
       </table>
     </div>
-    <div  style="width:600px;height: 200px;
-      overflow: auto;
-      margin-top: 20px;
-      position: relative;">
+    <div id="table-scroll" style="width:600px;">
       <table class='tablesorter tablesorter-default'  id="myTable">
         <thead>
       <tr class="tablesorter-headerRow">
