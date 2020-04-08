@@ -1,11 +1,13 @@
 
+  #myTable th td {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid gray;
+        text-align: left;
+    padding: 8px;
+    
+  }
 
-    #myTable th, #myTable td {
-      border: 1px solid gray;
-      text-align:center;
-      padding: 8px;
-	 
-    }
 
    tbody  #table-scroll {
 	  
@@ -13,6 +15,10 @@
       overflow: auto;
       margin-top: 20px;
       position: relative;
+      height: 200px;
+    overflow: auto;
+    margin-top: 20px;
+    position: relative;
     }
 
     #myTable tr:nth-child(even) {

@@ -1,0 +1,77 @@
+
+  #myTable {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid gray;
+  }
+
+  #myTable th {
+    border: 1px solid gray;
+    text-align: left;
+    padding: 8px;
+  }
+
+  #myTable td {
+    border: 1px solid gray;
+    text-align: left;
+    padding: 8px;
+  }
+
+
+  #myTable tr:nth-child(even) {
+    background-color: lightgray
+  }
+
+
+  <script>
+    $(document).ready(function() {
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+  </script>
+
+
+a:link,
+    a:visited,
+    a:hover,
+    a:active {
+      color: #000;
+      text-decoration: none;
+    }
+
+    th a.sort-by {
+      padding-right: 17px;
+      position: relative;
+    }
+
+    a.sort-by:before,
+    a.sort-by:after {
+      border: 4px solid transparent;
+      content: "";
+      display: block;
+      height: 0;
+      right: 5px;
+      top: 50%;
+      position: absolute;
+      width: 0;
+    }
+
+    a.sort-by:before {
+      border-bottom-color: #666;
+      margin-top: -9px;
+    }
+
+    a.sort-by:after {
+      border-top-color: #666;
+      margin-top: 1px;
+    }
+
+    th a,
+    td a {
+      display: block;
+      width: 100%;
+    }

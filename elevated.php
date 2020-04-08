@@ -146,58 +146,10 @@ if (isset($_GET['logout'])) {
       padding: 8px;
     }
 
-    #table-scroll {
-      height: 200px;
-      overflow: auto;
-      margin-top: 20px;
-      position: relative;
-    }
 
     #myTable tr:nth-child(even) {
       background-color: lightgray
     }
-
-    a:link,
-    a:visited,
-    a:hover,
-    a:active {
-      color: #000;
-      text-decoration: none;
-    }
-
-    th a.sort-by {
-      padding-right: 17px;
-      position: relative;
-    }
-
-    a.sort-by:before,
-    a.sort-by:after {
-      border: 4px solid transparent;
-      content: "";
-      display: block;
-      height: 0;
-      right: 5px;
-      top: 50%;
-      position: absolute;
-      width: 0;
-    }
-
-    a.sort-by:before {
-      border-bottom-color: #666;
-      margin-top: -9px;
-    }
-
-    a.sort-by:after {
-      border-top-color: #666;
-      margin-top: 1px;
-    }
-
-    th a,
-    td a {
-      display: block;
-      width: 100%;
-    }
-
     #opr {
       position: relative;
       left: -2px;
@@ -345,13 +297,14 @@ if (isset($_GET['logout'])) {
         </tr>
       </table>
     </div>
-    <div id="table-scroll" style="width:600px;">
-      <table id="myTable" class='tablesorter tablesorter-default'>
+    <div  style="width:600px;height: 200px;
+      overflow: auto;
+      margin-top: 20px;
+      position: relative;">
+      <table class='tablesorter tablesorter-default'  id="myTable">
+        <thead>
       <tr class="tablesorter-headerRow">
           <th class="tablesorter-header" data-column="0"><div class="tablesorter-header-inner"><input type="checkbox"></div></th>
-		 <!--<script>
-		  document.getElementById("hide").style.visibility='hidden';
-		  </script>-->
           <th class="tablesorter-header" data-column="1"><div class="tablesorter-header-inner">User_Id</div></th>
           <th class="tablesorter-header" data-column="2"><div class="tablesorter-header-inner">First_Name</div></th>
           <th class="tablesorter-header" data-column="3"><div class="tablesorter-header-inner">Last_Name</div></th>
@@ -359,6 +312,7 @@ if (isset($_GET['logout'])) {
           <th class="tablesorter-header" data-column="5"><div class="tablesorter-header-inner">Department</div></th>
 
         </tr>
+        </thead>
         <?php
         include('config.php');
         $query = "SELECT * FROM `user`inner join 
