@@ -22,7 +22,7 @@
         $dob = $_POST['dob'];
 
         if ($pass == $cpass) {
-            $sql = "INSERT INTO USER (Email,Password,CPassword,FirstName,LastName,Dob) Values('$email','$pass','$cpass','$fname','$lname','$dob') ";
+            $sql = "INSERT INTO USER (Email,Password,FirstName,LastName,Dob) Values('$email','$pass','$fname','$lname','$dob') ";
             $result = mysqli_query($db, $sql);
             if (!empty($result)) {
     ?>
@@ -45,8 +45,7 @@
                 </div>
             <?php
             }
-        } 
-    else {
+        } else {
             ?>
             <div style="position:absolute;top:40%;right:40%;">
 
@@ -58,6 +57,7 @@
     <?php
         }
     }
+
     ?>
 </body>
 
