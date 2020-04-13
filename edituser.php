@@ -38,7 +38,7 @@
             <div style="position:absolute;top:40%;right:40%;">
 
                 <div class='alert alert-success'>
-                    <a href="regularuser.php" class="close" data-dismiss="alert">&times;</a>
+                    <a href="" class="close" data-dismiss="alert">&times;</a>
                     User edited successfully.
                 </div>
             </div>
