@@ -234,12 +234,23 @@ if (isset($_GET['logout'])) {
           <td>Date of birth</td>
           <td><input style="width:172px;" type="date" name="Dob" value="<?php echo $_SESSION['dob']; ?>"></td>
         </tr>
+        <?php
+          $sql = "SELECT * FROM user inner join  Department on department.D_id=user.Department 
+          inner join  access on access.A_id=user.AccessType where UserId=$_SESSION[id];";
+          $query = mysqli_query($db, $sql);
+          $numrows = mysqli_num_rows($query);
+            if ($numrows != 0) {
+                while ($rows = mysqli_fetch_array($query)) {
+                    $DepartmentName = $rows['DepartmentName'];
+                    $access=$rows['AccessType'];
+                }}
+          ?>
         <tr>
-          <td>Access Type</td>
+          <td style="opacity:0.5;">Access Type</td>
           <td><select name="" style="width:172px;">
-              <option value="Administrator">Administrator</option>
-              <option value="Management">Management</option>
-              <option value="Photographer">Photographer</option>
+              <option value=""><?php echo $access;?></option>
+              <option value="">--</option>
+              <option value="">--</option>
             </select></td>
         </tr>
         <tr>
@@ -249,7 +260,7 @@ if (isset($_GET['logout'])) {
         <tr>
           <td style="opacity:0.5;">Department</td>
           <td><select name="" style="width:172px;">
-              <option value="">--</option>
+              <option value=""><?php echo $DepartmentName;?></option>
               <option value="">--</option>
               <option value="">--</option>
               <option value="">--</option>

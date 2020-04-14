@@ -6,10 +6,9 @@
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  
+
   <link rel="stylesheet" href="css/bootstrap-responsive.css">
   <style>
-    
     td {
       padding-right: 15px;
       padding-bottom: 5px;
@@ -194,7 +193,7 @@
 
   <div id="myprofile" class="tabcontent">
     <h2>Add User</h2>
-    <form method="POST" action="adduser.php">
+    <form id="myForm" method="POST" action="adduser.php">
       <table>
         <tr>
           <td>Email Address</td>
@@ -258,7 +257,12 @@
         </tr>
         <tr>
           <td><input id="button" type="submit" name="submit" value="Save"></td>
-          <td><input id="button" type="button" value="Cancel"></td>
+          <td><input id="button" type="button" value="Cancel" onclick="myFunction()"></td>
+          <script>
+            function myFunction() {
+              document.getElementById("myForm").reset();
+            }
+          </script>
         </tr>
       </table>
     </form>
@@ -352,7 +356,7 @@
           <button class="btn" name='Del'><i class="fa fa-close"></i> Delete</button>
         </div>
         <table style="position:absolute;top:40px;">
-          
+
           <tr>
             <td>
             <td>Department</td>
@@ -393,17 +397,31 @@
     </script>
 
     <div id="table-scroll" style="width:565px;position:relative;top:100px;">
-      <table id="myTable" >
+      <table class="tablesorter tablesorter-default" id="myTable">
+        <thead>
+          <tr class="tablesorter-headerRow">
+            <th class="tablesorter-header" data-column="0">
+              <div class="tablesorter-header-inner"><input type="checkbox"></div>
+            </th>
+            <th class="tablesorter-header" data-column="1">
+              <div class="tablesorter-header-inner">Request_ID</div>
+            </th>
+            <th class="tablesorter-header" data-column="2">
+              <div class="tablesorter-header-inner">First_Name</div>
+            </th>
+            <th class="tablesorter-header" data-column="3">
+              <div class="tablesorter-header-inner">Last_Name</div>
+            </th>
+            <th class="tablesorter-header" data-column="4">
+              <div class="tablesorter-header-inner">Department</div>
+            </th>
+            <th class="tablesorter-header" data-column="5">
+              <div class="tablesorter-header-inner">Request_Status</div>
+            </th>
 
-        <tr>
-          <th><input type="checkbox"></th>
-          <th>Request_ID</th>
-          <th>First_Name</th>
-          <th>Last_Name</th>
-          <th>Department</th>
-          <th>Request_Status</th>
+          </tr>
+        </thead>
 
-        </tr>
         <?php
         include('config.php');
         $query = "Select RequestId,FirstName,LastName,DepartmentName,ReqStatus from user 
