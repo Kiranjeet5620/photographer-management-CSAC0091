@@ -227,7 +227,7 @@ if (isset($_GET['logout'])) {
         </tr>
         <tr>
           <td>Password</td>
-          <td><input type="text" name="password" value="<?php echo $_SESSION['password']; ?>"></td>
+          <td><input type="password" name="password" value="<?php echo $_SESSION['password']; ?>"></td>
         </tr>
         <tr>
           <td>First name</td>
@@ -361,8 +361,8 @@ if (isset($_GET['logout'])) {
 
             echo "<tbody>";
             echo "<tr>";
-
-            echo "<td><input type='checkbox' name='checkbox[]' value='$n' id='chk'></td>";
+            $u = $row['UserId'];
+            echo "<td><input type='checkbox' name='checkbox[]' value='$u' id='chk'></td>";
 
             echo "<td>" . $row['UserId'] . "</td>";
             echo "<td>" . $row['FirstName'] . "</td>";
