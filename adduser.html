@@ -1,0 +1,76 @@
+<div id="myprofile" class="tabcontent"></div>
+<h2>Add User</h2>
+    <form id="myForm" method="POST" action="adduser.php">
+      <table>
+        <tr>
+          <td>Email Address</td>
+          <td><input type="email" name="email"></td>
+        </tr>
+        <tr>
+          <td>Password</td>
+          <td><input type="password" name="password"></td>
+        </tr>
+        <tr>
+          <td>First name</td>
+          <td> <input type="text" name="fname"></td>
+        </tr>
+        <tr>
+          <td>Last name</td>
+          <td> <input type="text" name="lname"></td>
+        </tr>
+        <tr>
+          <td>Date of birth</td>
+          <td><input type="date" name="dob" style="width:173px;"></td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td><select name="acc" style="width:173px;">
+              <?php
+              include('config.php');
+              $sql = mysqli_query($db, "SELECT * FROM access");
+
+              while ($row = $sql->fetch_assoc()) {
+                echo '<option value=" ' . $row['A_id'] . ' "> ' . $row['AccessType'] . ' </option>';
+              }
+              ?>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Phone number</td>
+          <td> <input type="text" name="phno"></td>
+        </tr>
+        <tr>
+          <td>Department</td>
+          <td><select name="deprt" style="width:173px;">
+              <?php
+              include('config.php');
+              $sql = mysqli_query($db, "SELECT * FROM department");
+
+              while ($row = $sql->fetch_assoc()) {
+                echo '<option value=" ' . $row['D_id'] . ' "> ' . $row['DepartmentName'] . ' </option>';
+              }
+              ?>
+            </select></td>
+
+        </tr>
+        <tr>
+          <td>Address</td>
+          <td> <input type="text" name="add"></td>
+        </tr>
+        <tr>
+          <td>Postal Code</td>
+          <td> <input type="text" name="pcode"></td>
+        </tr>
+        <tr>
+          <td><input id="button" type="submit" name="submit" value="Save"></td>
+          <td><input id="button" type="button" value="Cancel" onclick="myFunction()"></td>
+          <script>
+            function myFunction() {
+              document.getElementById("myForm").reset();
+            }
+          </script>
+        </tr>
+      </table>
+    </form>
+  </div>

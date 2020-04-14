@@ -1,3 +1,29 @@
+<?php
+include("config.php");
+// Starting the session, to use and 
+// store data in session variable 
+session_start();
+echo $_SESSION['username'];
+echo $_SESSION['id'];
+// If the session variable is empty, this  
+// means the user is yet to login 
+// User will be sent to 'login.php' page 
+// to allow the user to login 
+if (!isset($_SESSION['username'])) {
+  $_SESSION['msg'] = "You have to log in first";
+  header('location: login.php');
+}
+
+// Logout button will destroy the session, and 
+// will unset the session variables 
+// User will be headed to 'login.php' 
+// after loggin out 
+if (isset($_GET['logout'])) {
+  session_destroy();
+  unset($_SESSION['username']);
+  header("location: login.php");
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -192,31 +218,42 @@
   </div>
 
   <div id="myprofile" class="tabcontent">
-    <h2>Add User</h2>
-    <form id="myForm" method="POST" action="adduser.php">
+  <h2>Add User</h2>
+    <form method='POST' action="adduser.php">
       <table>
         <tr>
           <td>Email Address</td>
-          <td><input type="email" name="email"></td>
+          <td><input type="email" name="email" value=" <?php echo $_SESSION['username']; ?>"></td>
         </tr>
         <tr>
           <td>Password</td>
-          <td><input type="password" name="password"></td>
+          <td><input type="text" name="password" value="<?php echo $_SESSION['password']; ?>"></td>
         </tr>
         <tr>
           <td>First name</td>
-          <td> <input type="text" name="fname"></td>
+          <td> <input type="text" name="firstname" value="<?php echo $_SESSION['fname']; ?>"></td>
         </tr>
         <tr>
           <td>Last name</td>
-          <td> <input type="text" name="lname"></td>
+          <td> <input type="text" name="lastname" value="<?php echo $_SESSION['lname']; ?>"></td>
         </tr>
         <tr>
           <td>Date of birth</td>
-          <td><input type="date" name="dob" style="width:173px;"></td>
+          <td><input style="width:172px;" type="date" name="Dob" value="<?php echo $_SESSION['dob']; ?>"></td>
         </tr>
+        <?php
+          $sql = "SELECT * FROM user inner join  Department on department.D_id=user.Department 
+          inner join  access on access.A_id=user.AccessType where UserId=$_SESSION[id];";
+          $query = mysqli_query($db, $sql);
+          $numrows = mysqli_num_rows($query);
+            if ($numrows != 0) {
+                while ($rows = mysqli_fetch_array($query)) {
+                    $DepartmentName = $rows['DepartmentName'];
+                    $access=$rows['AccessType'];
+                }}
+          ?>
         <tr>
-          <td>Access Type</td>
+          <td >Access Type</td>
           <td><select name="acc" style="width:173px;">
               <?php
               include('config.php');
@@ -226,46 +263,38 @@
                 echo '<option value=" ' . $row['A_id'] . ' "> ' . $row['AccessType'] . ' </option>';
               }
               ?>
-            </select>
-          </td>
+            </td>
         </tr>
         <tr>
           <td>Phone number</td>
-          <td> <input type="text" name="phno"></td>
+          <td> <input type="text" name="phone" value="<?php echo $_SESSION['phone']; ?>"></td>
         </tr>
         <tr>
-          <td>Department</td>
-          <td><select name="deprt" style="width:173px;">
-              <?php
-              include('config.php');
-              $sql = mysqli_query($db, "SELECT * FROM department");
-
-              while ($row = $sql->fetch_assoc()) {
-                echo '<option value=" ' . $row['D_id'] . ' "> ' . $row['DepartmentName'] . ' </option>';
-              }
-              ?>
+          <td style="opacity:0.5;">Department</td>
+          <td>
+            
+          <select name="" style="width:172px;">
+              <option value=""><?php echo $DepartmentName;?></option>
+              <option value="">--</option>
+              <option value="">--</option>
+              <option value="">--</option>
+              <option value="">--</option>
             </select></td>
-
         </tr>
         <tr>
           <td>Address</td>
-          <td> <input type="text" name="add"></td>
+          <td> <input type="text" name="address" value="<?php echo $_SESSION['add']; ?>"></td>
         </tr>
         <tr>
           <td>Postal Code</td>
-          <td> <input type="text" name="pcode"></td>
+          <td> <input type="text" name="postal" value="<?php echo $_SESSION['postal']; ?>"></td>
         </tr>
         <tr>
-          <td><input id="button" type="submit" name="submit" value="Save"></td>
-          <td><input id="button" type="button" value="Cancel" onclick="myFunction()"></td>
-          <script>
-            function myFunction() {
-              document.getElementById("myForm").reset();
-            }
-          </script>
+          <td><input id="button" type="submit" name="submit" value="Edit"></td>
         </tr>
       </table>
     </form>
+
   </div>
 
   <div id="users" class="tabcontent">
@@ -348,11 +377,12 @@
   <div id="accessrequests" class="tabcontent">
     <h2>Access Requests</h2>
     <div>
-      <form id='opr' method='Post' action='operation.php'>
+    <button style="position:absolute;right:250px;top:193px;" class="btn" class="tablinks" name='Create' 
+    onclick="openTab(event, 'myprofile')"><i class="fa fa-plus-circle"></i> Create</button>&nbsp;&nbsp;&nbsp;
+    <button style="position:absolute;right:175px;top:193px;"  class="btn"class="tablinks" name='View' onclick="openTab(event, 'myprofile')"><i class="fa fa-eye"></i> View</button>&nbsp;&nbsp;&nbsp;
+    <button style="position:absolute;right:105px;top:193px;"  class="btn" class="tablinks" name='Edit' onclick="openTab(event, 'myprofile')"><i class="fa fa-pencil"></i> Edit</button>&nbsp;&nbsp;&nbsp;
+        <form id='opr' method='Post' action='operation.php'>
         <div style="position:absolute;right:0%;">
-          <button class="btn" name='Create'><i class="fa fa-plus-circle"></i> Create</button>&nbsp;&nbsp;&nbsp;
-          <button class="btn" name='View'><i class="fa fa-eye"></i> View</button>&nbsp;&nbsp;&nbsp;
-          <button class="btn" name='Edit'><i class="fa fa-pencil"></i> Edit</button>&nbsp;&nbsp;&nbsp;
           <button class="btn" name='Del'><i class="fa fa-close"></i> Delete</button>
         </div>
         <table style="position:absolute;top:40px;">
