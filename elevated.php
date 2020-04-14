@@ -232,7 +232,7 @@ if (isset($_GET['logout'])) {
         </tr>
         <tr>
           <td>Date of birth</td>
-          <td><input type="date" name="Dob" value="<?php echo $_SESSION['dob']; ?>"></td>
+          <td><input style="width:172px;" type="date" name="Dob" value="<?php echo $_SESSION['dob']; ?>"></td>
         </tr>
         <tr>
           <td>Access Type</td>
@@ -247,13 +247,13 @@ if (isset($_GET['logout'])) {
           <td> <input type="text" name="phone" value="<?php echo $_SESSION['phone']; ?>"></td>
         </tr>
         <tr>
-          <td>Department</td>
+          <td style="opacity:0.5;">Department</td>
           <td><select name="" style="width:172px;">
-              <option value="Portrait Photography">Portrait Photography</option>
-              <option value="Technology">Technology</option>
-              <option value="Fashion Photography">Fashion Photography</option>
-              <option value="Sports Photography">Sports Photography</option>
-              <option value="Wildlife Photography">Wildlife Photography</option>
+              <option value="">--</option>
+              <option value="">--</option>
+              <option value="">--</option>
+              <option value="">--</option>
+              <option value="">--</option>
             </select></td>
         </tr>
         <tr>
