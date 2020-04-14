@@ -387,7 +387,7 @@ if (isset($_GET['logout'])) {
       <button style="position:absolute;right:175px;top:193px;" class="btn" class="tablinks" name='View' onclick="openTab(event, 'myprofile')"><i class="fa fa-eye"></i> View</button>&nbsp;&nbsp;&nbsp;
       <button style="position:absolute;right:105px;top:193px;" class="btn" class="tablinks" name='Edit' onclick="openTab(event, 'myprofile')"><i class="fa fa-pencil"></i> Edit</button>&nbsp;&nbsp;&nbsp;
       <form id='opr' method='Post' action='operation.php'>
-        <div style="position:absolute;right:0%;">
+        <div style="position:absolute;right:20px;">
           <button class="btn" name='Del'><i class="fa fa-close"></i> Delete</button>
         </div>
         <table style="position:absolute;top:250px;">

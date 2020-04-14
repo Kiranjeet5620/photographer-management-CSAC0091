@@ -209,7 +209,7 @@ if (isset($_GET['logout'])) {
         </tr>
         <tr>
           <td>Date of birth</td>
-          <td><input type="date" name="Dob" value="<?php echo $_SESSION['dob']; ?>"></td>
+          <td><input style="width:172px;" type="date" name="Dob" value="<?php echo $_SESSION['dob']; ?>"></td>
         </tr>
         <tr>
           <td>Access Type</td>
