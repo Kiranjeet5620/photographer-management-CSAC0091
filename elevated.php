@@ -285,8 +285,8 @@ if (isset($_GET['logout'])) {
   <div id="users" class="tabcontent">
     <h2>Users</h2>
     <div class="btns">
-      <button class="btn"><i class="fa fa-eye"></i> View</button>&nbsp;&nbsp;&nbsp;
-      <button class="btn"><i class="fa fa-pencil"></i> Edit</button>&nbsp;&nbsp;&nbsp;
+    <button style="position:absolute;right:175px;top:193px;" class="btn" class="tablinks" name='View' onclick="openTab(event, 'myprofile')"><i class="fa fa-eye"></i> View</button>&nbsp;&nbsp;&nbsp;
+      <button style="position:absolute;right:105px;top:193px;" class="btn" class="tablinks" name='Edit' onclick="openTab(event, 'myprofile')"><i class="fa fa-pencil"></i> Edit</button>&nbsp;&nbsp;&nbsp;
     </div>
     <div>
       <table>

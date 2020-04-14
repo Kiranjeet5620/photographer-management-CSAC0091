@@ -219,7 +219,7 @@ if (isset($_GET['logout'])) {
 
   <div id="myprofile" class="tabcontent">
     <h2>Add User</h2>
-    <form method='POST' action="adduser.php">
+    <form id="myForm" method='POST' action="adduser.php">
       <table>
         <tr>
           <td>Email Address</td>
@@ -293,7 +293,13 @@ if (isset($_GET['logout'])) {
           <td> <input type="text" name="postal" value="<?php echo $_SESSION['postal']; ?>"></td>
         </tr>
         <tr>
-          <td><input id="button" type="submit" name="submit" value="Edit"></td>
+          <td><input id="button" type="submit" name="submit" value="Save"></td>
+          <td><input id="button" type="button" value="Cancel" onclick="myFunction()"></td>
+          <script>
+            function myFunction() {
+              document.getElementById("myForm").reset();
+            }
+          </script>
         </tr>
       </table>
     </form>
