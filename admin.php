@@ -218,8 +218,8 @@ if (isset($_GET['logout'])) {
   </div>
 
   <div id="myprofile" class="tabcontent">
-  <h2>Add User</h2>
-    <form id="myForm" method='POST' action="adduser.php">
+    <h2>Add User</h2>
+    <form method='POST' action="adduser.php">
       <table>
         <tr>
           <td>Email Address</td>
@@ -242,18 +242,19 @@ if (isset($_GET['logout'])) {
           <td><input style="width:172px;" type="date" name="Dob" value="<?php echo $_SESSION['dob']; ?>"></td>
         </tr>
         <?php
-          $sql = "SELECT * FROM user inner join  Department on department.D_id=user.Department 
+        $sql = "SELECT * FROM user inner join  Department on department.D_id=user.Department 
           inner join  access on access.A_id=user.AccessType where UserId=$_SESSION[id];";
-          $query = mysqli_query($db, $sql);
-          $numrows = mysqli_num_rows($query);
-            if ($numrows != 0) {
-                while ($rows = mysqli_fetch_array($query)) {
-                    $DepartmentName = $rows['DepartmentName'];
-                    $access=$rows['AccessType'];
-                }}
-          ?>
+        $query = mysqli_query($db, $sql);
+        $numrows = mysqli_num_rows($query);
+        if ($numrows != 0) {
+          while ($rows = mysqli_fetch_array($query)) {
+            $DepartmentName = $rows['DepartmentName'];
+            $access = $rows['AccessType'];
+          }
+        }
+        ?>
         <tr>
-          <td >Access Type</td>
+          <td>Access Type</td>
           <td><select name="acc" style="width:173px;">
               <?php
               include('config.php');
@@ -263,7 +264,7 @@ if (isset($_GET['logout'])) {
                 echo '<option value=" ' . $row['A_id'] . ' "> ' . $row['AccessType'] . ' </option>';
               }
               ?>
-            </td>
+          </td>
         </tr>
         <tr>
           <td>Phone number</td>
@@ -293,12 +294,6 @@ if (isset($_GET['logout'])) {
         </tr>
         <tr>
           <td><input id="button" type="submit" name="submit" value="Edit"></td>
-          <td><input id="button" type="button" value="Cancel" onclick="myFunction()"></td>
-          <script>
-            function myFunction() {
-              document.getElementById("myForm").reset();
-            }
-          </script>
         </tr>
       </table>
     </form>
@@ -308,10 +303,13 @@ if (isset($_GET['logout'])) {
   <div id="users" class="tabcontent">
     <h2>Users</h2>
     <div class="btns">
-      <button><i class="fa fa-plus-circle"></i> Create</button>&nbsp;&nbsp;&nbsp;
-      <button><i class="fa fa-eye"></i> View</button>&nbsp;&nbsp;&nbsp;
-      <button><i class="fa fa-pencil"></i> Edit</button>&nbsp;&nbsp;&nbsp;
-      <button><i class="fa fa-close"></i> Delete</button>
+      <button style="position:absolute;right:250px;top:193px;" class="btn" class="tablinks" name='Create' onclick="openTab(event, 'myprofile')"><i class="fa fa-plus-circle"></i> Create</button>&nbsp;&nbsp;&nbsp;
+      <button style="position:absolute;right:175px;top:193px;" class="btn" class="tablinks" name='View' onclick="openTab(event, 'myprofile')"><i class="fa fa-eye"></i> View</button>&nbsp;&nbsp;&nbsp;
+      <button style="position:absolute;right:105px;top:193px;" class="btn" class="tablinks" name='Edit' onclick="openTab(event, 'myprofile')"><i class="fa fa-pencil"></i> Edit</button>&nbsp;&nbsp;&nbsp;
+      <form id='opr' method='Post' action='operation.php'>
+        <div style="position:absolute;right:0%;">
+          <button class="btn" name='Del'><i class="fa fa-close"></i> Delete</button>
+        </div>
     </div>
     <div>
       <table>
@@ -364,7 +362,7 @@ if (isset($_GET['logout'])) {
             echo "<tbody>";
             echo "<tr>";
 
-            echo "<td><input type='checkbox' ></td>";
+            echo "<td><input type='checkbox' name='checkbox[]' value='$n' id='chk'></td>";
 
             echo "<td>" . $row['UserId'] . "</td>";
             echo "<td>" . $row['FirstName'] . "</td>";
@@ -385,30 +383,29 @@ if (isset($_GET['logout'])) {
   <div id="accessrequests" class="tabcontent">
     <h2>Access Requests</h2>
     <div>
-    <button style="position:absolute;right:250px;top:193px;" class="btn" class="tablinks" name='Create' 
-    onclick="openTab(event, 'myprofile')"><i class="fa fa-plus-circle"></i> Create</button>&nbsp;&nbsp;&nbsp;
-    <button style="position:absolute;right:175px;top:193px;"  class="btn"class="tablinks" name='View' onclick="openTab(event, 'myprofile')"><i class="fa fa-eye"></i> View</button>&nbsp;&nbsp;&nbsp;
-    <button style="position:absolute;right:105px;top:193px;"  class="btn" class="tablinks" name='Edit' onclick="openTab(event, 'myprofile')"><i class="fa fa-pencil"></i> Edit</button>&nbsp;&nbsp;&nbsp;
-        <form id='opr' method='Post' action='operation.php'>
+      <button style="position:absolute;right:250px;top:193px;" class="btn" class="tablinks" name='Create' onclick="openTab(event, 'myprofile')"><i class="fa fa-plus-circle"></i> Create</button>&nbsp;&nbsp;&nbsp;
+      <button style="position:absolute;right:175px;top:193px;" class="btn" class="tablinks" name='View' onclick="openTab(event, 'myprofile')"><i class="fa fa-eye"></i> View</button>&nbsp;&nbsp;&nbsp;
+      <button style="position:absolute;right:105px;top:193px;" class="btn" class="tablinks" name='Edit' onclick="openTab(event, 'myprofile')"><i class="fa fa-pencil"></i> Edit</button>&nbsp;&nbsp;&nbsp;
+      <form id='opr' method='Post' action='operation.php'>
         <div style="position:absolute;right:0%;">
           <button class="btn" name='Del'><i class="fa fa-close"></i> Delete</button>
         </div>
-        <table style="position:absolute;top:40px;">
+        <table style="position:absolute;top:250px;">
 
           <tr>
             <td>
             <td>Department</td>
             <td><select name="deprt" style="width:173px;">
-            <option value="">All</option>
-              <?php
-              include('config.php');
-              $sql = mysqli_query($db, "SELECT * FROM department");
+                <option value="">All</option>
+                <?php
+                include('config.php');
+                $sql = mysqli_query($db, "SELECT * FROM department");
 
-              while ($row = $sql->fetch_assoc()) {
-                echo '<option value=" ' . $row['D_id'] . ' "> ' . $row['DepartmentName'] . ' </option>';
-              }
-              ?>
-            </select></td>
+                while ($row = $sql->fetch_assoc()) {
+                  echo '<option value=" ' . $row['D_id'] . ' "> ' . $row['DepartmentName'] . ' </option>';
+                }
+                ?>
+              </select></td>
             </td>
             <td>
               <div class="searchbox">
@@ -437,7 +434,7 @@ if (isset($_GET['logout'])) {
       });
     </script>
 
-    <div id="table-scroll" style="width:565px;position:relative;top:100px;">
+    <div id="table-scroll" style="width:565px;position:relative;top:100px;left:15px;">
       <table class="tablesorter tablesorter-default" id="myTable">
         <thead>
           <tr class="tablesorter-headerRow">
