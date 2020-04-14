@@ -219,7 +219,7 @@ if (isset($_GET['logout'])) {
 
   <div id="myprofile" class="tabcontent">
   <h2>Add User</h2>
-    <form method='POST' action="adduser.php">
+    <form id="myForm" method='POST' action="adduser.php">
       <table>
         <tr>
           <td>Email Address</td>
@@ -270,16 +270,18 @@ if (isset($_GET['logout'])) {
           <td> <input type="text" name="phone" value="<?php echo $_SESSION['phone']; ?>"></td>
         </tr>
         <tr>
-          <td style="opacity:0.5;">Department</td>
-          <td>
-            
-          <select name="" style="width:172px;">
-              <option value=""><?php echo $DepartmentName;?></option>
-              <option value="">--</option>
-              <option value="">--</option>
-              <option value="">--</option>
-              <option value="">--</option>
-            </select></td>
+          <td>Department</td>
+          <td><select name="deprt" style="width:173px;">
+              <?php
+              include('config.php');
+              $sql = mysqli_query($db, "SELECT * FROM department");
+
+              while ($row = $sql->fetch_assoc()) {
+                echo '<option value=" ' . $row['D_id'] . ' "> ' . $row['DepartmentName'] . ' </option>';
+              }
+              ?>
+            </select>
+          </td>
         </tr>
         <tr>
           <td>Address</td>
@@ -291,6 +293,12 @@ if (isset($_GET['logout'])) {
         </tr>
         <tr>
           <td><input id="button" type="submit" name="submit" value="Edit"></td>
+          <td><input id="button" type="button" value="Cancel" onclick="myFunction()"></td>
+          <script>
+            function myFunction() {
+              document.getElementById("myForm").reset();
+            }
+          </script>
         </tr>
       </table>
     </form>
@@ -390,14 +398,17 @@ if (isset($_GET['logout'])) {
           <tr>
             <td>
             <td>Department</td>
-            <td><select name="">
-                <option value="Technology">All</option>
-                <option value="Portrait Photography">Portrait Photography</option>
-                <option value="Technology">Technology</option>
-                <option value="Fashion Photography">Fashion Photography</option>
-                <option value="Sports Photography">Sports Photography</option>
-                <option value="Wildlife Photography">Wildlife Photography</option>
-              </select></td>
+            <td><select name="deprt" style="width:173px;">
+            <option value="">All</option>
+              <?php
+              include('config.php');
+              $sql = mysqli_query($db, "SELECT * FROM department");
+
+              while ($row = $sql->fetch_assoc()) {
+                echo '<option value=" ' . $row['D_id'] . ' "> ' . $row['DepartmentName'] . ' </option>';
+              }
+              ?>
+            </select></td>
             </td>
             <td>
               <div class="searchbox">
